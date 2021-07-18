@@ -173,6 +173,4 @@ Before installing QGroundControl for the first time:
 5. Application Setting --> AutoCOnnection to the following devices --> only select UDP
 
 ## Run the control node
-'''
 
-'''
