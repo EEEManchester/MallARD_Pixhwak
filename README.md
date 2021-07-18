@@ -147,8 +147,6 @@ source devel/setup.bash
 ```
 ## QGroundControl Ground Control Station
 
-Install the [QGroundControl](https://docs.qgroundcontrol.com/master/en/getting_started/download_and_install.html)
-
 QGroundControl can be installed/run on Ubuntu LTS 18.04 (and later).
 
 Ubuntu comes with a serial modem manager that interferes with any robotics related use of a serial port (or USB serial). Before installing QGroundControl you should remove the modem manager and grant yourself permissions to access the serial port. You also need to install GStreamer in order to support video streaming.
@@ -170,7 +168,10 @@ Before installing QGroundControl for the first time:
     chmod +x ./QGroundControl.AppImage
     ./QGroundControl.AppImage  (or double click)
 
+3. Finish the sensors setup in QGroundControl
+4. Vehicle Setup --> parameters --> SYSID_MYGCS = 1
+5. Application Setting --> AutoCOnnection to the following devices --> only select UDP
 
-
-
-
+## Run the control node
+'''
+'''
