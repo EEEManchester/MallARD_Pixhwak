@@ -163,8 +163,8 @@ Before installing QGroundControl for the first time:
 
 2.Logout and login again to enable the change to user permissions.
 
-  To install QGroundControl:
-  1.Download QGroundControl.AppImage.
+  To install QGroundControl:  
+  1.Download QGroundControl.AppImage.  
   2.Install (and run) using the terminal commands:
 
     chmod +x ./QGroundControl.AppImage
