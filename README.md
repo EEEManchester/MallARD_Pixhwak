@@ -145,7 +145,7 @@ catkin build
 #    Else rosrun can't find nodes from this workspace.
 source devel/setup.bash
 ```
-## QGroundControl Ground Control Station
+## 3. QGroundControl Ground Control Station
 
 QGroundControl can be installed/run on Ubuntu LTS 18.04 (and later).
 
@@ -172,7 +172,7 @@ Before installing QGroundControl for the first time:
 4. Vehicle Setup --> parameters --> SYSID_MYGCS = 1
 5. Application Setting --> AutoCOnnection to the following devices --> only select UDP
 
-## Run the control node
+## 4. Run the control node
 ```
 Shell#1:
 roslaunch mavors apm.launch
