@@ -155,18 +155,17 @@ Ubuntu comes with a serial modem manager that interferes with any robotics relat
 
 Before installing QGroundControl for the first time:
 
-    On the command prompt enter:
+1.On the command prompt enter:
 
     sudo usermod -a -G dialout $USER
     sudo apt-get remove modemmanager -y
     sudo apt install gstreamer1.0-plugins-bad gstreamer1.0-libav gstreamer1.0-gl -y
 
-    Logout and login again to enable the change to user permissions.
+2.Logout and login again to enable the change to user permissions.
 
   To install QGroundControl:
-
-    Download QGroundControl.AppImage.
-    Install (and run) using the terminal commands:
+  1.Download QGroundControl.AppImage.
+  2.Install (and run) using the terminal commands:
 
     chmod +x ./QGroundControl.AppImage
     ./QGroundControl.AppImage  (or double click)
