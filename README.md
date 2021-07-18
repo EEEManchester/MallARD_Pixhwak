@@ -173,4 +173,13 @@ Before installing QGroundControl for the first time:
 5. Application Setting --> AutoCOnnection to the following devices --> only select UDP
 
 ## Run the control node
+```
+Shell#1:
+roslaunch mavors apm.launch
 
+Shell#2:
+roslaunch joy2thr joy2thr.launch
+
+Shell#3:
+rosservice call /mavros/cmd/arming "value: true"  
+```
