@@ -85,6 +85,6 @@ In ~~unlikely~~ situation that the above instructions do not work, you may want 
 * [Setting up the Build Environment (Linux/Ubuntu)](https://ardupilot.org/dev/docs/building-setup-linux.html)
 * [BUILD.md](https://github.com/ArduPilot/ardupilot/blob/master/BUILD.md)
 
-## USE
-### Frame selection
-### ROS
+### USE
+#### Frame selection
+#### ROS
