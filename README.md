@@ -89,7 +89,7 @@ In ~~unlikely~~ situation that the above instructions do not work, you may want 
 #### Frame selection
 #### ROS
 
-## 2.mavros_mallard
+## 2. mavros_mallard
 A custom MAVROS for MALLARD
 ### Source installation
 
