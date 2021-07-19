@@ -110,15 +110,17 @@ vehicle setup --> parameter --> frame_config
 9 - ROS PWM control  
 #### ROS
 
-## 2. mavros_mallard
+## 2. Control thrusters via ROS using MAVROS and MAVLINK - mavros_mallard
 A custom MAVROS for MALLARD
 ### Source installation
 
-Use `wstool` utility for retrieving sources and  [`catkin` tool](https://catkin-tools.readthedocs.io/en/latest/)for build.
+Use `wstool` utility for retrieving sources and  [catkin tools](https://catkin-tools.readthedocs.io/en/latest/)' for build.
+
+TBD Xueliang to fix this section - mor explanation of each step with separation between commands
 
 NOTE: The source installation instructions are for the ROS Melodic release.
 
-```sh
+```
 sudo apt-get install python-catkin-tools python-rosinstall-generator -y
 # For Noetic use that:
 # sudo apt install python3-catkin-tools python3-rosinstall-generator python3-osrf-pycommon -y
@@ -157,7 +159,7 @@ wstool update -t src -j4
 rosdep install --from-paths src --ignore-src -y
 
 # 5. Install GeographicLib datasets:
-./src/mavros/mavros/scripts/install_geographiclib_datasets.sh
+sudo ./src/mavros_mallard/mavros/scripts/install_geographiclib_datasets.sh
 
 # 6. Build source
 catkin build
@@ -192,6 +194,9 @@ Before installing QGroundControl for the first time:
  When QGC launches you may see an error saying 'Parameters are missing from firmware. You may be running a version of firmware which is not fully supported .....'. This is normal, just proceed.
 
 3. Finish the sensors setup in QGroundControl - click sensors and follow procedures for accelerometer and gyro - autopilot rotation set to none
+
+split these instruction here - this final bit just for mavros mavlink
+
 5. Vehicle Setup --> parameters --> SYSID_MYGCS = 1
 6. Application Setting --> AutoCOnnection to the following devices --> only select UDP
 
