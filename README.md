@@ -38,8 +38,8 @@ git clone --recursive git@github.com:EEEManchester/ArduPilot_MALLARD.git
 
 Make sure you log into the correct GitHub account that has access to [EEEManchester](https://github.com/EEEManchester).
 
-### Setup environment
-[A script](https://github.com/ArduPilot/ardupilot/blob/master/Tools/environment_install/install-prereqs-ubuntu.sh) is provided to automatically setup your build environment.
+### Setup build and compile environment
+[A script](https://github.com/ArduPilot/ardupilot/blob/master/Tools/environment_install/install-prereqs-ubuntu.sh) is provided to automatically setup your build environment. It will install the tool chain in addition it will also install the math proxy ground station controller and the neccessary elements to do software in the loop simulation on your PC of the code.
 ```
 cd ArduPilot_MALLARD
 Tools/environment_install/install-prereqs-ubuntu.sh -y
@@ -49,7 +49,7 @@ Tools/environment_install/install-prereqs-ubuntu.sh -y
 > Tools/environment_install/install-prereqs-ubuntu-py3.sh -y
 > ```
 
-Reload the path (log-out and log-in to make permanent):
+Reload the path (log-out and log-in to make permanent) to store the new paths to all those tools:
 ```
 . ~/.profile
 ```
