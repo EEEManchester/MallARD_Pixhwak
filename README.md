@@ -8,7 +8,7 @@ This repository is about controlling the thrusters in MallARD via MAVROS using P
 * usb cables
 * Thrusters, speed controllers and batterys for testing
 
-## 1. flash pihhawk 4 with custom firmware - Autopilot_MALLARD
+## 1. flash pixhawk 4 with custom firmware - Autopilot_MALLARD
 ArduPilot MALLARD (AP-M) is a customised ArduPilot firmware for MALLARD. It is built based on the current stable ArduSub release (ArduSub-4.0.3).
 
 AP-M provides a *Custom* frame configuration adapted to the thruster allocation used on MALLARD. This frame configuration allows higher level motion command input such as *move_forward*, *turn_left*, etc. AP-M also provides two new frame configurations, i.e. *Joystick PWM Control* and *ROS PWM Control*, which enables sending a PWM signal directly to each individual motor by pushing a joystick or publishing a ROS topic, respectively. The *ROS PWM Control* frame assumes thruster allocation is dealt with within ROS.
@@ -93,7 +93,11 @@ In ~~unlikely~~ situation that the above instructions do not work, you may want 
 * [BUILD.md](https://github.com/ArduPilot/ardupilot/blob/master/BUILD.md)
 
 ### TEST the custom firmware using QGC
-TBD Xueliang to add instructions for installing and setting up QGC and test instructions
+TBD Xueliang to add instructions for installing and setting up QGC and test instructions.
+
+Add photograph of hardware setup
+
+Add instructions for using the virtual joystick to make some thrusters move. Use full control air frame and when you put input on x thruster 1 should meve but no others. input on y thruster 2 moves etc......
 #### Frame selection
 Using QGC, it is required to choose the frame manually:  
 `./QGroundControl.AppImage `  
