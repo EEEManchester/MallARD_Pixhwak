@@ -1,7 +1,14 @@
 # MallARD_Pixhwak
-This repository is about controlling the 4 thrusters in MallARD via MAVROS using Pixhawks4. Two tasks needs to be set down. First is to compile the custom firmware for Pixhawk4 named Audusub and flash it into Pixhawk4. The second is installation of MAVROS and MAVLINK. The two submodules in this repository contain the instruction and source files of Ardusub firmware and MAVROS.
+This repository is about controlling the thrusters in MallARD via MAVROS using Pixhawk4. Two tasks needs to be completed. First is to compile the custom firmware for Pixhawk4 named Audusub and flash it onto Pixhawk4. The second is installation of MAVROS and MAVLINK. The two submodules in this repository contain the instruction and source files of Ardusub firmware and MAVROS.
 
-## 1. Autopilot_MALLARD
+# Required hardware
+* pixxhawk 4 flight controller
+* PC running ununtu 18.04 and ros melodic
+* Joypad (ps4)
+* usb cables
+* Thrusters, speed controllers and batterys for testing
+
+## 1. flash pihhawk 4 with custom firmware - Autopilot_MALLARD
 ArduPilot MALLARD (AP-M) is a customised ArduPilot firmware for MALLARD. It is built based on the current stable ArduSub release (ArduSub-4.0.3).
 
 AP-M provides a *Custom* frame configuration adapted to the thruster allocation used on MALLARD. This frame configuration allows higher level motion command input such as *move_forward*, *turn_left*, etc. AP-M also provides two new frame configurations, i.e. *Joystick PWM Control* and *ROS PWM Control*, which enables sending a PWM signal directly to each individual motor by pushing a joystick or publishing a ROS topic, respectively. The *ROS PWM Control* frame assumes thruster allocation is dealt with within ROS.
@@ -85,7 +92,8 @@ In ~~unlikely~~ situation that the above instructions do not work, you may want 
 * [Setting up the Build Environment (Linux/Ubuntu)](https://ardupilot.org/dev/docs/building-setup-linux.html)
 * [BUILD.md](https://github.com/ArduPilot/ardupilot/blob/master/BUILD.md)
 
-### USE
+### TEST the custom firmware using QGC
+TBD Xueliang to add instructions for installing and setting up QGC and test instructions
 #### Frame selection
 Using QGC, it is required to choose the frame manually:  
 `./QGroundControl.AppImage `  
@@ -170,15 +178,17 @@ Before installing QGroundControl for the first time:
 2.Logout and login again to enable the change to user permissions.
 
   To install QGroundControl:  
-  1.Download [QGroundControl.AppImage](https://s3-us-west-2.amazonaws.com/qgroundcontrol/latest/QGroundControl.AppImage).  
-  2.Install (and run) using the terminal commands:
+  1.Download QCG from this link [QGroundControl.AppImage](https://s3-us-west-2.amazonaws.com/qgroundcontrol/latest/QGroundControl.AppImage).  
+  2.Install (and run) using the terminal commands from the folder containing the .AppImage file:
 
     chmod +x ./QGroundControl.AppImage
-    ./QGroundControl.AppImage  (or double click)
+    ./QGroundControl.AppImage
+    
+ When QGC launches you may see an error saying 'Parameters are missing from firmware. You may be running a version of firmware which is not fully supported .....'. This is normal, just proceed.
 
-3. Finish the sensors setup in QGroundControl
-4. Vehicle Setup --> parameters --> SYSID_MYGCS = 1
-5. Application Setting --> AutoCOnnection to the following devices --> only select UDP
+3. Finish the sensors setup in QGroundControl - click sensors and follow procedures for accelerometer and gyro - autopilot rotation set to none
+5. Vehicle Setup --> parameters --> SYSID_MYGCS = 1
+6. Application Setting --> AutoCOnnection to the following devices --> only select UDP
 
 ## 4. Run the control node
 ```
