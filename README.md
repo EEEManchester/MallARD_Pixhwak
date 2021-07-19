@@ -96,6 +96,7 @@ In ~~unlikely~~ situation that the above instructions do not work, you may want 
 TBD Xueliang to add instructions for installing and setting up QGC and test instructions.
 
 Add photograph of hardware setup
+Add instruction for testing the induvidual motors from the vehicle setup.
 
 Add instructions for using the virtual joystick to make some thrusters move. Use full control air frame and when you put input on x thruster 1 should meve but no others. input on y thruster 2 moves etc......
 #### Frame selection
