@@ -87,6 +87,14 @@ In ~~unlikely~~ situation that the above instructions do not work, you may want 
 
 ### USE
 #### Frame selection
+Using QGC, it is required to choose the frame manually:  
+`./QGroundControl.AppImage `  
+vehicle setup --> parameter --> frame_config  
+![frame_config](https://user-images.githubusercontent.com/77399327/126155642-84f4bfde-8636-4cd2-a41a-349287011d40.png)
+
+7 - Mallard custom frame  
+8 - Joystick PWM control  
+9 - ROS PWM control  
 #### ROS
 
 ## 2. mavros_mallard
