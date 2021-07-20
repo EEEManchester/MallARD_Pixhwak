@@ -55,9 +55,9 @@ Reload the path (log-out and log-in to make permanent) to store the new paths to
 ```
 
 ### Build with WAF
-Make sure you are in ardupilot folder.
+**Make sure you are in ardupilot folder.**
 
-> **Note:** For Python3 users, you need to replace `waf` with `waf-py3`.
+**Note:** For Python3 users, you need to replace `waf` with `waf-py3`.
 
 If you have previously built the firmware, you may want to clean WAF first:
 ```
@@ -103,8 +103,10 @@ Before installing QGroundControl for the first time:
 
 1. On the command prompt enter:
     Add the user's name to the dialout group, not the user root even though the command is run as root:   
-    `sudo usermod -a -G dialout $USER`  
+    `sudo usermod -a -G dialout $USER`
+    Remove the modem manager and grant yourself permissions to access the serial port: 
     `sudo apt-get remove modemmanager -y`  
+    Install GStreamer in order to support video streaming (probably not be use in MallARD):
     `sudo apt install gstreamer1.0-plugins-bad gstreamer1.0-libav gstreamer1.0-gl -y`
 
 2. Logout and login again to enable the change to user permissions.
@@ -131,7 +133,6 @@ Add instructions for using the virtual joystick to make some thrusters move. Use
 * Frame selection
 ArduSub frame can be configured by setting [RAME_CONFIG](https://www.ardusub.com/developers/full-parameter-list.html#frameconfig-frame-configuration). In addition to the built-in options, we offer two additional configurations. The Custom frame has also been modified to reflect the thruster allocation of MALLARD. For test, choose 8.
 
-
 | Value | Description | Comment |
 | ----- | ----- | ----- |
 | 7 | Custom | Tthruster allocation can be modified by editing the matrix found in [AP_Motors6DOF.cpp](https://github.com/EEEManchester/ArduPilot_MALLARD/blob/733f57fa1fcc381113ecd4b01095a1f895e5a536/libraries/AP_Motors/AP_Motors6DOF.cpp#L185) @ `case SUB_FRAME_CUSTOM` |
@@ -141,7 +142,7 @@ ArduSub frame can be configured by setting [RAME_CONFIG](https://www.ardusub.com
 You may use QGC to select the required frame in its parameter editing panel:
 ![frame_config](https://user-images.githubusercontent.com/77399327/126155642-84f4bfde-8636-4cd2-a41a-349287011d40.png)
 * Add a virtual joystick  
-Click Q icon -->  Application settings --> General --> tick virtual joystick   
+Click Q![Screenshot from 2021-07-20 17-06-53](https://user-images.githubusercontent.com/77399327/126358068-e0ca4cc3-65eb-4550-873f-3a1ce5251b17.png) icon -->  Application settings --> General --> tick virtual joystick ![Screenshot from 2021-07-20 17-09-21](https://user-images.githubusercontent.com/77399327/126358419-3b18b2d9-4661-4400-aa69-0b49365d3181.png)   
 * Arm and using the virtual joystick to make the thruster move
 
 
@@ -202,31 +203,50 @@ to
 9. Make sure that you use setup.bash or setup.zsh from workspace. Else rosrun can't find nodes from this workspace.
 `source devel/setup.bash`
 
-## 3. QGroundControl Ground Control Station
-
-
-
-split these instruction here - this final bit just for mavros mavlink
-
-5. Vehicle Setup --> parameters --> SYSID_MYGCS = 1
-6. Application Setting --> AutoCOnnection to the following devices --> only select UDP
-
+#### Original guides
+1. [README](https://github.com/EEEManchester/mavros_mallard/blob/master/README_MAVROS.md)
+2. [Installation instructions](https://github.com/mavlink/mavros/blob/master/mavros/README.md#installation)
 ## 3. Run the control node
 Before use MAVROS to drive MallARD, some parameters need to be set in QGC. 
 * Use command `./QGroundControl.AppImage ` or double click
 
-* After enter in the QGC, Click Q icon, and click Vehicle setup, Paramters, using search bar: SYSID_MYGCS, set SYSID_MYGCS = 1
+* After enter in the QGC, Click Q icon, and click Vehicle setup, click Paramters, using search bar: SYSID_MYGCS, set SYSID_MYGCS = 1
+![Screenshot from 2021-07-20 17-34-36](https://user-images.githubusercontent.com/77399327/126361966-96e3e88f-519c-4faa-ba2a-d746de810c40.png)
 
-* Back to QGC. Click Q icon, and Application Setting, AutoConnection to following devices, just tick the UDP and distick the rest as the picture shown below:  
-![tick UPD](https://user-images.githubusercontent.com/77399327/126353159-63572722-cf02-4400-9b32-6df1c6168384.png)
+* Back to QGC. Click Q icon, and click Application Setting, click AutoConnection to following devices, just tick the UDP and distick the rest as the picture shown below:  
+![tick UPD](https://user-images.githubusercontent.com/77399327/126353159-63572722-cf02-4400-9b32-6df1c6168384.png)  
 
-Shell#1:  
+Connect PS4 joystick to PC via Bluebooth
+ 1. Press and hold the central PS Button and the Share button for three seconds until the lightbar at the top of the controller begins to flash. Next open up the Bluetooth settings on your PC then select 'Wireless Controller'.
+ 2. Configuring and Using a Linux-Supported Joystick with ROS:
+    * Start by installing the package: 
+    `sudo apt-get install ros-melodic-joy`
+    * Configuring the Joystick:
+    Connect your joystick to your computer. Now let's see if Linux recognized your joystick.
+    `ls /dev/input/` 
+    You will see a listing of all of your input devices similar to below:
+    ```
+    by-id    event0  event2  event4  event6  event8  mouse0  mouse2  uinput
+    by-path  event1  event3  event5  event7  js0     mice    mouse1  
+    ```
+    As you can see above, the joystick devices are referred to by jsX ; in this case, our joystick is js0. Let's make sure that the joystick is working. 
+    `sudo jstest /dev/input/jsX`
+    You will see the output of the joystick on the screen. Move the joystick around to see the data change. 
+    ```
+    Driver version is 2.1.0.
+    Joystick (Logitech Logitech Cordless RumblePad 2) has 6 axes (X, Y, Z, Rz, Hat0X, Hat0Y)
+    and 12 buttons (BtnX, BtnY, BtnZ, BtnTL, BtnTR, BtnTL2, BtnTR2, BtnSelect, BtnStart, BtnMode, BtnThumbL, BtnThumbR).
+    Testing ... (interrupt to exit)
+    Axes:  0:     0  1:     0  2:     0  3:     0  4:     0  5:     0 Buttons:  0:off  1:off  2:off  3:off  4:off  5:off  6:off  7:off  8:off  9:off 10:off 11:off
+    ```
+
+ Launch mavros nodes in shell#1:  
 `roslaunch mavors apm.launch`
-
-Shell#2:  
+Launch control node(including joy node) in Shell#2:  
 `roslaunch joy2thr joy2thr.launch`
-
-Shell#3:  
+Arm the vehicle by command in Shell#3:  
 `rosservice call /mavros/cmd/arming "value: true"` 
 
 
+#### Original guides
+[ROS Wiki](http://wiki.ros.org/joy/Tutorials/ConfiguringALinuxJoystick)
