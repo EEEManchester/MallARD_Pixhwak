@@ -135,8 +135,8 @@ ArduSub frame can be configured by setting [RAME_CONFIG](https://www.ardusub.com
 
 | Value | Description | Comment |
 | ----- | ----- | ----- |
-| 7 | Custom | Tthruster allocation can be modified by editing the matrix found in [AP_Motors6DOF.cpp](https://github.com/EEEManchester/ArduPilot_MALLARD/blob/733f57fa1fcc381113ecd4b01095a1f895e5a536/libraries/AP_Motors/AP_Motors6DOF.cpp#L185) @ `case SUB_FRAME_CUSTOM` |
-| 8 | Joystick PWM Control | *WIP* Each motor's PWM input is mapped to a single RC channel |
+| 7 | Custom | Thruster allocation can be modified by editing the matrix found in [AP_Motors6DOF.cpp](https://github.com/EEEManchester/ArduPilot_MALLARD/blob/733f57fa1fcc381113ecd4b01095a1f895e5a536/libraries/AP_Motors/AP_Motors6DOF.cpp#L185) @ `case SUB_FRAME_CUSTOM` |
+| 8 | Joystick PWM Control | Thruster allocation can be modified by editing the matrix found in [AP_Motors6DOF.cpp](https://github.com/EEEManchester/ArduPilot_MALLARD/blob/733f57fa1fcc381113ecd4b01095a1f895e5a536/libraries/AP_Motors/AP_Motors6DOF.cpp#L185) @ `case SUB_FRAME_JOYSTICK_PWM_CONTROL` |
 | 9 | ROS PWM Control | All motors are disabled for control via MAVLink message [COMMAND_LONG (#76)](https://mavlink.io/en/messages/common.html#COMMAND_LONG) & [AV_CMD_DO_SET_MODE (176)](https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_MODE)|
 
 You may use QGC to select the required frame in its parameter editing panel:
