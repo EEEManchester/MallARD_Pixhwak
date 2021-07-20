@@ -1,7 +1,7 @@
 [submodule "mavros_mallard"]
 	path = mavros_mallard
 	url = https://github.com/EEEManchester/mavros_mallard.git
-	branch = master
+	branch = dev
 [submodule "ArduPilot_MALLARD"]
 	path = ArduPilot_MALLARD
 	url = https://github.com/EEEManchester/ArduPilot_MALLARD.git
