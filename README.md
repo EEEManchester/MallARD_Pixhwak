@@ -217,7 +217,8 @@ Before use MAVROS to drive MallARD, some parameters need to be set in QGC.
 * After enter in the QGC, Click Q icon, and click Vehicle setup, Paramters, using search bar: SYSID_MYGCS, set SYSID_MYGCS = 1
 
 * Back to QGC. Click Q icon, and Application Setting, AutoConnection to following devices, just tick the UDP and distick the rest as the picture shown below:  
-![Screenshot from 2021-07-20 15-19-44.png] (/home/xueliang/Pictures/Screenshot from 2021-07-20 15-19-44.png)  
+![tick UPD](https://user-images.githubusercontent.com/77399327/126353159-63572722-cf02-4400-9b32-6df1c6168384.png)
+ 
 
 Shell#1:  
 `roslaunch mavors apm.launch`
