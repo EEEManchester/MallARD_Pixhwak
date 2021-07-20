@@ -102,7 +102,7 @@ Ubuntu comes with a serial modem manager that interferes with any robotics relat
 Before installing QGroundControl for the first time:
 
 1. On the command prompt enter:
-    Add the user's name to the dialout group, not the user root even though the command is run as roo: 
+    Add the user's name to the dialout group, not the user root even though the command is run as root:   
     `sudo usermod -a -G dialout $USER`  
     `sudo apt-get remove modemmanager -y`  
     `sudo apt install gstreamer1.0-plugins-bad gstreamer1.0-libav gstreamer1.0-gl -y`
@@ -146,20 +146,20 @@ Click Q icon -->  Application settings --> General --> tick virtual joystick
 
 
 ## 2. Control thrusters via ROS using MAVROS and MAVLINK - 
-A custom MAVROS for MALLARD
-### Source installation
+A custom MAVROS for MALLARD  
+### Source installation  
 
 Use `wstool` utility for retrieving sources and  [catkin tools](https://catkin-tools.readthedocs.io/en/latest/) for build.
 
 
 NOTE: The source installation instructions are for the ROS Melodic release.
 
-Install catkin_tool and dependencies:  
+1. Install catkin_tool and dependencies:  
 `sudo apt-get install python-catkin-tools python-rosinstall-generator -y`  
-For Noetic use that:  
+2. For Noetic use that:  
 `sudo apt install python3-catkin-tools python3-rosinstall-generator python3-osrf-pycommon -y`
 
-1. Create the workspace: unneeded if you already has workspace
+3. Create the workspace: unneeded if you already has workspace
 
 ```
 mkdir -p ~/catkin_ws/src  
@@ -167,15 +167,15 @@ cd ~/catkin_ws
 catkin init  
 wstool init src  
 ```
-2. Install MAVLink
+4. Install MAVLink
 
 we use the Melodic reference for all ROS distros as it's not distro-specific and up to date
 `rosinstall_generator --rosdistro melodic mavlink | tee /tmp/mavros.rosinstall`
 
-3. Install MAVROS: get source (upstream - released)
+5. Install MAVROS: get source (upstream - released)
 `rosinstall_generator --upstream mavros | tee -a /tmp/mavros.rosinstall`
 
-4. Create workspace & deps
+6. Create workspace & deps
 
     `wstool merge -t src /tmp/mavros.rosinstall`  
 `gedit ~/catkin_ws/src/.rosinstall`  
@@ -192,13 +192,13 @@ to
 `wstool update -t src -j4`  
 `rosdep install --from-paths src --ignore-src -y`
 
-5. Install GeographicLib datasets:  
+7. Install GeographicLib datasets:  
 `sudo ./src/mavros_mallard/mavros/scripts/install_geographiclib_datasets.sh`
 
-6. Build source   
+8. Build source   
 `catkin build`
 
-7. Make sure that you use setup.bash or setup.zsh from workspace. Else rosrun can't find nodes from this workspace.
+9. Make sure that you use setup.bash or setup.zsh from workspace. Else rosrun can't find nodes from this workspace.
 `source devel/setup.bash`
 
 ## 3. QGroundControl Ground Control Station
@@ -211,6 +211,13 @@ split these instruction here - this final bit just for mavros mavlink
 6. Application Setting --> AutoCOnnection to the following devices --> only select UDP
 
 ## 3. Run the control node
+Before use MAVROS to drive MallARD, some parameters need to be set in QGC. 
+* Use command `./QGroundControl.AppImage ` or double click
+
+* After enter in the QGC, Click Q icon, and click Vehicle setup, Paramters, using search bar: SYSID_MYGCS, set SYSID_MYGCS = 1
+
+* Back to QGC. Click Q icon, and Application Setting, AutoConnection to following devices, just tick the UDP and distick the rest as the picture shown below:  
+![Screenshot from 2021-07-20 15-19-44.png] (/home/xueliang/Pictures/Screenshot from 2021-07-20 15-19-44.png)  
 
 Shell#1:  
 `roslaunch mavors apm.launch`
