@@ -241,9 +241,9 @@ Connect PS4 joystick to PC via Bluebooth
     ```
 
  Launch mavros nodes in shell#1:  
-`roslaunch mavors apm.launch`
+`roslaunch mavors apm.launch`  
 Launch control node(including joy node) in Shell#2:  
-`roslaunch joy2thr joy2thr.launch`
+`roslaunch joy2thr joy2thr.launch`  
 Arm the vehicle by command in Shell#3:  
 `rosservice call /mavros/cmd/arming "value: true"` 
 
