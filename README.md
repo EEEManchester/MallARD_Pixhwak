@@ -203,44 +203,21 @@ to
 
 ## 3. QGroundControl Ground Control Station
 
-QGroundControl can be installed/run on Ubuntu LTS 18.04 (and later).
 
-Ubuntu comes with a serial modem manager that interferes with any robotics related use of a serial port (or USB serial). Before installing QGroundControl you should remove the modem manager and grant yourself permissions to access the serial port. You also need to install GStreamer in order to support video streaming.
-
-Before installing QGroundControl for the first time:
-
-1.On the command prompt enter:
-
-    sudo usermod -a -G dialout $USER
-    sudo apt-get remove modemmanager -y
-    sudo apt install gstreamer1.0-plugins-bad gstreamer1.0-libav gstreamer1.0-gl -y
-
-2.Logout and login again to enable the change to user permissions.
-
-  To install QGroundControl:  
-  1.Download QCG from this link [QGroundControl.AppImage](https://s3-us-west-2.amazonaws.com/qgroundcontrol/latest/QGroundControl.AppImage).  
-  2.Install (and run) using the terminal commands from the folder containing the .AppImage file:
-
-    chmod +x ./QGroundControl.AppImage
-    ./QGroundControl.AppImage
-    
- When QGC launches you may see an error saying 'Parameters are missing from firmware. You may be running a version of firmware which is not fully supported .....'. This is normal, just proceed.
-
-3. Finish the sensors setup in QGroundControl - click sensors and follow procedures for accelerometer and gyro - autopilot rotation set to none
 
 split these instruction here - this final bit just for mavros mavlink
 
 5. Vehicle Setup --> parameters --> SYSID_MYGCS = 1
 6. Application Setting --> AutoCOnnection to the following devices --> only select UDP
 
-## 4. Run the control node
-```
-Shell#1:
-roslaunch mavors apm.launch
+## 3. Run the control node
 
-Shell#2:
-roslaunch joy2thr joy2thr.launch
+Shell#1:  
+`roslaunch mavors apm.launch`
 
-Shell#3:
-rosservice call /mavros/cmd/arming "value: true"  
-```
+Shell#2:  
+`roslaunch joy2thr joy2thr.launch`
+
+Shell#3:  
+`rosservice call /mavros/cmd/arming "value: true"` 
+
