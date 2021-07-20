@@ -129,7 +129,8 @@ Add instructions for using the virtual joystick to make some thrusters move. Use
 
 * Use command `./QGroundControl.AppImage ` or double click
 * Frame selection
-ArduSub frame can be configured by setting [RAME_CONFIG](https://www.ardusub.com/developers/full-parameter-list.html#frameconfig-frame-configuration). In addition to the built-in options, we offer two additional configurations. The Custom frame has also been modified to reflect the thruster allocation of MALLARD. 
+ArduSub frame can be configured by setting [RAME_CONFIG](https://www.ardusub.com/developers/full-parameter-list.html#frameconfig-frame-configuration). In addition to the built-in options, we offer two additional configurations. The Custom frame has also been modified to reflect the thruster allocation of MALLARD. For test, choose 8.
+
 
 | Value | Description | Comment |
 | ----- | ----- | ----- |
