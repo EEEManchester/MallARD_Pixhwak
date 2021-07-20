@@ -92,82 +92,115 @@ In ~~unlikely~~ situation that the above instructions do not work, you may want 
 * [Setting up the Build Environment (Linux/Ubuntu)](https://ardupilot.org/dev/docs/building-setup-linux.html)
 * [BUILD.md](https://github.com/ArduPilot/ardupilot/blob/master/BUILD.md)
 
-### TEST the custom firmware using QGC
-TBD Xueliang to add instructions for installing and setting up QGC and test instructions.
+### TEST the custom firmware using QGC 
 
-Add photograph of hardware setup
-Add instruction for testing the induvidual motors from the vehicle setup.
+1.Install QGroundControl
+QGroundControl can be installed/run on Ubuntu LTS 18.04 (and later).
 
-Add instructions for using the virtual joystick to make some thrusters move. Use full control air frame and when you put input on x thruster 1 should meve but no others. input on y thruster 2 moves etc......
-#### Frame selection
-Using QGC, it is required to choose the frame manually:  
-`./QGroundControl.AppImage `  
-vehicle setup --> parameter --> frame_config  
+Ubuntu comes with a serial modem manager that interferes with any robotics related use of a serial port (or USB serial). Before installing QGroundControl you should remove the modem manager and grant yourself permissions to access the serial port. You also need to install GStreamer in order to support video streaming.
+
+Before installing QGroundControl for the first time:
+
+1. On the command prompt enter:
+    Add the user's name to the dialout group, not the user root even though the command is run as roo: 
+    `sudo usermod -a -G dialout $USER`  
+    `sudo apt-get remove modemmanager -y`  
+    `sudo apt install gstreamer1.0-plugins-bad gstreamer1.0-libav gstreamer1.0-gl -y`
+
+2. Logout and login again to enable the change to user permissions.
+
+To install QGroundControl:  
+  * Download QCG from this link [QGroundControl.AppImage](https://s3-us-west-2.amazonaws.com/qgroundcontrol/latest/QGroundControl.AppImage).  
+  * Install (and run) using the terminal commands from the folder containing the .AppImage file:
+
+    `chmod +x ./QGroundControl.AppImage`  
+    `./QGroundControl.AppImage`
+    
+ When QGC launches you may see an error saying 'Parameters are missing from firmware. You may be running a version of firmware which is not fully supported .....'. This is normal, just proceed.
+
+3. Finish the sensors setup in QGroundControl - click sensors and follow procedures for accelerometer and compass - autopilot rotation set to none
+
+2.Hardware setup for test  
+Connect the hardware as the photo shown below:
+![hardware setup](https://user-images.githubusercontent.com/77399327/126214195-7c65f4f2-6351-4708-9f5e-b52a294ba59a.jpg)
+
+3.Test the motor  
+Add instructions for using the virtual joystick to make some thrusters move. Use JOYSTICK_PWM_CONTROL frame and when you put input on x thruster 1 should meve but no others. input on y only thruster 2 moves . input on yaw only thruster 3 moves. input on z only thruster 4 moves.
+
+* Use command `./QGroundControl.AppImage ` or double click
+* Frame selection
+ArduSub frame can be configured by setting [RAME_CONFIG](https://www.ardusub.com/developers/full-parameter-list.html#frameconfig-frame-configuration). In addition to the built-in options, we offer two additional configurations. The Custom frame has also been modified to reflect the thruster allocation of MALLARD. 
+
+| Value | Description | Comment |
+| ----- | ----- | ----- |
+| 7 | Custom | Tthruster allocation can be modified by editing the matrix found in [AP_Motors6DOF.cpp](https://github.com/EEEManchester/ArduPilot_MALLARD/blob/733f57fa1fcc381113ecd4b01095a1f895e5a536/libraries/AP_Motors/AP_Motors6DOF.cpp#L185) @ `case SUB_FRAME_CUSTOM` |
+| 8 | Joystick PWM Control | *WIP* Each motor's PWM input is mapped to a single RC channel |
+| 9 | ROS PWM Control | All motors are disabled for control via MAVLink message [COMMAND_LONG (#76)](https://mavlink.io/en/messages/common.html#COMMAND_LONG) & [AV_CMD_DO_SET_MODE (176)](https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_MODE)|
+
+You may use QGC to select the required frame in its parameter editing panel:
 ![frame_config](https://user-images.githubusercontent.com/77399327/126155642-84f4bfde-8636-4cd2-a41a-349287011d40.png)
+* Add a virtual joystick  
+Click Q icon -->  Application settings --> General --> tick virtual joystick   
+* Arm and using the virtual joystick to make the thruster move
 
-7 - Mallard custom frame  
-8 - Joystick PWM control  
-9 - ROS PWM control  
-#### ROS
 
-## 2. Control thrusters via ROS using MAVROS and MAVLINK - mavros_mallard
+
+## 2. Control thrusters via ROS using MAVROS and MAVLINK - 
 A custom MAVROS for MALLARD
 ### Source installation
 
-Use `wstool` utility for retrieving sources and  [catkin tools](https://catkin-tools.readthedocs.io/en/latest/)' for build.
+Use `wstool` utility for retrieving sources and  [catkin tools](https://catkin-tools.readthedocs.io/en/latest/) for build.
 
-TBD Xueliang to fix this section - mor explanation of each step with separation between commands
 
 NOTE: The source installation instructions are for the ROS Melodic release.
 
+Install catkin_tool and dependencies:  
+`sudo apt-get install python-catkin-tools python-rosinstall-generator -y`  
+For Noetic use that:  
+`sudo apt install python3-catkin-tools python3-rosinstall-generator python3-osrf-pycommon -y`
+
+1. Create the workspace: unneeded if you already has workspace
+
 ```
-sudo apt-get install python-catkin-tools python-rosinstall-generator -y
-# For Noetic use that:
-# sudo apt install python3-catkin-tools python3-rosinstall-generator python3-osrf-pycommon -y
-
-# 1. Create the workspace: unneeded if you already has workspace
-mkdir -p ~/catkin_ws/src
-cd ~/catkin_ws
-catkin init
-wstool init src
-
-# 2. Install MAVLink
-#    we use the Kinetic reference for all ROS distros as it's not distro-specific and up to date
-rosinstall_generator --rosdistro melodic mavlink | tee /tmp/mavros.rosinstall
-
-# 3. Install MAVROS: get source (upstream - released)
-rosinstall_generator --upstream mavros | tee -a /tmp/mavros.rosinstall
-# alternative: latest source
-# rosinstall_generator --upstream-development mavros | tee -a /tmp/mavros.rosinstall
-# For fetching all the dependencies into your catkin_ws, just add '--deps' to the above scripts
-# ex: rosinstall_generator --upstream mavros --deps | tee -a /tmp/mavros.rosinstall
-
-# 4. Create workspace & deps
-wstool merge -t src /tmp/mavros.rosinstall
-gedit ~/catkin_ws/src/.rosinstall
-change 
-'- git:
-    local-name: mavros
-    uri: https://github.com/mavlink/mavros.git
-    version: 1.8.0'
-to
-'- git:
-    local-name: mavros_mallard
-    uri: https://github.com/EEEManchester/mavros_mallard.git
-    version: dev'
-wstool update -t src -j4
-rosdep install --from-paths src --ignore-src -y
-
-# 5. Install GeographicLib datasets:
-sudo ./src/mavros_mallard/mavros/scripts/install_geographiclib_datasets.sh
-
-# 6. Build source
-catkin build
-
-# 7. Make sure that you use setup.bash or setup.zsh from workspace.
-#    Else rosrun can't find nodes from this workspace.
-source devel/setup.bash
+mkdir -p ~/catkin_ws/src  
+cd ~/catkin_ws  
+catkin init  
+wstool init src  
 ```
+2. Install MAVLink
+
+we use the Melodic reference for all ROS distros as it's not distro-specific and up to date
+`rosinstall_generator --rosdistro melodic mavlink | tee /tmp/mavros.rosinstall`
+
+3. Install MAVROS: get source (upstream - released)
+`rosinstall_generator --upstream mavros | tee -a /tmp/mavros.rosinstall`
+
+4. Create workspace & deps
+
+    `wstool merge -t src /tmp/mavros.rosinstall`  
+`gedit ~/catkin_ws/src/.rosinstall`  
+change   
+'- git:  
+    local-name: mavros  
+    uri: https://github.com/mavlink/mavros.git  
+    version: 1.8.0'  
+to  
+'- git:  
+    local-name: mavros_mallard  
+    uri: https://github.com/EEEManchester/mavros_mallard.git  
+    version: dev'  
+`wstool update -t src -j4`  
+`rosdep install --from-paths src --ignore-src -y`
+
+5. Install GeographicLib datasets:  
+`sudo ./src/mavros_mallard/mavros/scripts/install_geographiclib_datasets.sh`
+
+6. Build source   
+`catkin build`
+
+7. Make sure that you use setup.bash or setup.zsh from workspace. Else rosrun can't find nodes from this workspace.
+`source devel/setup.bash`
+
 ## 3. QGroundControl Ground Control Station
 
 QGroundControl can be installed/run on Ubuntu LTS 18.04 (and later).
