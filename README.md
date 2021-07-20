@@ -248,5 +248,5 @@ Arm the vehicle by command in Shell#3:
 `rosservice call /mavros/cmd/arming "value: true"` 
 
 
-#### Original guides
+### Original guides
 [ROS Wiki](http://wiki.ros.org/joy/Tutorials/ConfiguringALinuxJoystick)
