@@ -1,14 +1,14 @@
 # MallARD_Pixhwak
-This repository is about controlling the thrusters in MallARD via MAVROS using Pixhawk4. Two tasks needs to be completed. First is to compile the custom firmware for Pixhawk4 named Audusub and flash it onto Pixhawk4. The second is installation of MAVROS and MAVLINK. The two submodules in this repository contain the instruction and source files of Ardusub firmware and MAVROS.
+This repository is about controlling the thrusters in MallARD via MAVROS using Pixhawk4. Two tasks needs to be completed. First is to compile the custom firmware for Pixhawk4 named Audusub and flash it onto Pixhawk 4. The second is installation of MAVROS and MAVLINK. The two submodules in this repository contain source files of ythe custom Ardusub firmware and MAVROS.
 
 # Required hardware
-* pixxhawk 4 flight controller
+* Pixhawk 4 flight controller
 * PC running ununtu 18.04 and ros melodic
 * Joypad (ps4)
-* usb cables
-* Thrusters, speed controllers and batterys for testing
+* USB cables
+* Thrusters, speed controllers and batteries for testing
 
-## 1. flash pixhawk 4 with custom firmware - Autopilot_MALLARD
+## 1. Flash pixhawk 4 with custom firmware - Autopilot_MALLARD
 ArduPilot MALLARD (AP-M) is a customised ArduPilot firmware for MALLARD. It is built based on the current stable ArduSub release (ArduSub-4.0.3).
 
 AP-M provides a *Custom* frame configuration adapted to the thruster allocation used on MALLARD. This frame configuration allows higher level motion command input such as *move_forward*, *turn_left*, etc. AP-M also provides two new frame configurations, i.e. *Joystick PWM Control* and *ROS PWM Control*, which enables sending a PWM signal directly to each individual motor by pushing a joystick or publishing a ROS topic, respectively. The *ROS PWM Control* frame assumes thruster allocation is dealt with within ROS.
