@@ -127,28 +127,21 @@ Connect the hardware as the photo shown below:
 ![hardware setup](https://user-images.githubusercontent.com/77399327/126214195-7c65f4f2-6351-4708-9f5e-b52a294ba59a.jpg)
 
 3.Test the motor  
-Use JOYSTICK_PWM_CONTROL frame and when you put input on x thruster 1 should meve but no others. input on y only thruster 2 moves . input on yaw only thruster 3 moves. input on z only thruster 4 moves.
-
 * Launch QGC, using command `./QGroundControl.AppImage `
-* Frame selection (For more details about thruster allocation, please checkthis link [README_math.md](https://github.com/EEEManchester/MallARD_Pixhwak/blob/main/README_math.md))  
-ArduSub frame can be configured by setting [FRAME_CONFIG](https://www.ardusub.com/developers/full-parameter-list.html#frameconfig-frame-configuration). In addition to the built-in options, we offer two additional configurations. The Custom frame has also been modified to reflect the thruster allocation of MALLARD. For test, choose 8.
-
-| Value | Description | Comment |
-| ----- | ----- | ----- |
-| 7 | Custom | Thruster allocation can be modified by editing the matrix found in [AP_Motors6DOF.cpp](https://github.com/EEEManchester/ArduPilot_MALLARD/blob/733f57fa1fcc381113ecd4b01095a1f895e5a536/libraries/AP_Motors/AP_Motors6DOF.cpp#L185) @ `case SUB_FRAME_CUSTOM` |
-| 8 | Joystick PWM Control | Thruster allocation can be modified by editing the matrix found in [AP_Motors6DOF.cpp](https://github.com/EEEManchester/ArduPilot_MALLARD/blob/733f57fa1fcc381113ecd4b01095a1f895e5a536/libraries/AP_Motors/AP_Motors6DOF.cpp#L185) @ `case SUB_FRAME_JOYSTICK_PWM_CONTROL` |
-| 9 | ROS PWM Control | All motors are disabled for control via MAVLink message [COMMAND_LONG (#76)](https://mavlink.io/en/messages/common.html#COMMAND_LONG) & [AV_CMD_DO_SET_MODE (176)](https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_MODE)|
-
-You may use QGC to select the required frame in its parameter editing panel:
-![frame_config](https://user-images.githubusercontent.com/77399327/126155642-84f4bfde-8636-4cd2-a41a-349287011d40.png)
-* Make sure the motrors you want to test are able.  
-Click Q![Screenshot from 2021-07-20 17-06-53](https://user-images.githubusercontent.com/77399327/126358068-e0ca4cc3-65eb-4550-873f-3a1ce5251b17.png) icon --> Vehicle Setup --> Parameters. Using the search bar: SERVO1_FUNCTION. Check it has been set as follow and do the same steps to SERVO2_FUNCTIONN, SERVO3_FUNCTION, SERVO4_FUNCTION.
+* Frame selection (For more details about thruster allocation, please checkthis link [README_math.md](https://github.com/EEEManchester/MallARD_Pixhwak/blob/main/README_math.md)  
+ArduSub frame can be configured by setting [FRAME_CONFIG](https://www.ardusub.com/developers/full-parameter-list.html#frameconfig-frame-configuration). In addition to the built-in options, we offer two additional configurations. The Custom frame has also been modified to reflect the thruster allocation of MALLARD. For test, choose 8.  
+Click Q![Screenshot from 2021-07-20 17-06-53](https://user-images.githubusercontent.com/77399327/126358068-e0ca4cc3-65eb-4550-873f-3a1ce5251b17.png) icon --> Vehicle Setup --> Parameters.  Using the search bar: FRAME_CONFIG. Set it to 8.
+You may see its parameter editing panel:  
+![Screenshot from 2021-07-21 20-35-48](https://user-images.githubusercontent.com/77399327/126549189-31f30050-e76f-4249-88ec-97d6426c9de2.png)
+* Make sure the motrors you want to test are enable.  
+ In parameters setting, using the search bar: SERVO1_FUNCTION. Check it has been set as follow and do the same steps to SERVO2_FUNCTIONN, SERVO3_FUNCTION, SERVO4_FUNCTION. YOu may see the pannel like this.  
 ![Screenshot from 2021-07-21 10-34-34](https://user-images.githubusercontent.com/77399327/126467201-8a5fb0f8-61a5-49fb-982b-ad57c3400842.png)
+
+* Make sure you system ID is 255.  In Parameters, using search bar: SYSID_MYGCS, make sure it has been set to 255.  
+![Screenshot from 2021-07-21 12-07-26](https://user-images.githubusercontent.com/77399327/126479324-263afdb9-82ff-41af-8063-a9e6af0a489d.png) 
 * Add a virtual joystick  
-Click Q icon -->  Application settings --> General --> tick virtual joystick ![Screenshot from 2021-07-20 17-09-21](https://user-images.githubusercontent.com/77399327/126358419-3b18b2d9-4661-4400-aa69-0b49365d3181.png)
-    *  Make sure you system ID is 255.  In Parameters, using search bar: SYSID_MYGCS, make sure it has been set to 255.  
-![Screenshot from 2021-07-21 12-07-26](https://user-images.githubusercontent.com/77399327/126479324-263afdb9-82ff-41af-8063-a9e6af0a489d.png)   
-* Arm and using the virtual joystick to make the thruster move
+Click Q icon -->  Application settings --> General --> tick virtual joystick ![Screenshot from 2021-07-20 17-09-21](https://user-images.githubusercontent.com/77399327/126358419-3b18b2d9-4661-4400-aa69-0b49365d3181.png)    
+* Arm and using the virtual joystick to make the thruster move. Use JOYSTICK_PWM_CONTROL frame and when you put input on x thruster 1 should meve but no others. input on y only thruster 2 moves . input on yaw only thruster 3 moves. input on z only thruster 4 moves.
 
 
 
