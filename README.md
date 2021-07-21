@@ -127,11 +127,11 @@ Connect the hardware as the photo shown below:
 ![hardware setup](https://user-images.githubusercontent.com/77399327/126214195-7c65f4f2-6351-4708-9f5e-b52a294ba59a.jpg)
 
 3.Test the motor  
-Add instructions for using the virtual joystick to make some thrusters move. Use JOYSTICK_PWM_CONTROL frame and when you put input on x thruster 1 should meve but no others. input on y only thruster 2 moves . input on yaw only thruster 3 moves. input on z only thruster 4 moves.
+Use JOYSTICK_PWM_CONTROL frame and when you put input on x thruster 1 should meve but no others. input on y only thruster 2 moves . input on yaw only thruster 3 moves. input on z only thruster 4 moves.
 
-* Use command `./QGroundControl.AppImage ` or double click
+* Launch QGC, using command `./QGroundControl.AppImage `
 * Frame selection (For more details about thruster allocation, please checkthis link [README_math.md](https://github.com/EEEManchester/MallARD_Pixhwak/blob/main/README_math.md))  
-ArduSub frame can be configured by setting [RAME_CONFIG](https://www.ardusub.com/developers/full-parameter-list.html#frameconfig-frame-configuration). In addition to the built-in options, we offer two additional configurations. The Custom frame has also been modified to reflect the thruster allocation of MALLARD. For test, choose 8.
+ArduSub frame can be configured by setting [FRAME_CONFIG](https://www.ardusub.com/developers/full-parameter-list.html#frameconfig-frame-configuration). In addition to the built-in options, we offer two additional configurations. The Custom frame has also been modified to reflect the thruster allocation of MALLARD. For test, choose 8.
 
 | Value | Description | Comment |
 | ----- | ----- | ----- |
