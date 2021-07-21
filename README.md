@@ -103,20 +103,27 @@ Before installing QGroundControl for the first time:
 
 1. On the command prompt enter:
     Add the user's name to the dialout group, not the user root even though the command is run as root:   
-    ```sudo usermod -a -G dialout $USER```  
-    Remove the modem manager and grant yourself permissions to access the serial port:   
-    `sudo apt-get remove modemmanager -y`  
+    ```
+    sudo usermod -a -G dialout $USER
+    ```  
+    Remove the modem manager and grant yourself permissions to access the serial port:  
+    ``` 
+    sudo apt-get remove modemmanager -y
+    ```  
     Install GStreamer in order to support video streaming (probably not be use in MallARD):  
-    `sudo apt install gstreamer1.0-plugins-bad gstreamer1.0-libav gstreamer1.0-gl -y`
+    ```
+    sudo apt install gstreamer1.0-plugins-bad gstreamer1.0-libav gstreamer1.0-gl -y
+    ```
 
 2. Logout and login again to enable the change to user permissions.
 
 To install QGroundControl:  
   * Download QCG from this link [QGroundControl.AppImage](https://s3-us-west-2.amazonaws.com/qgroundcontrol/latest/QGroundControl.AppImage).  
   * Install (and run) using the terminal commands from the folder containing the .AppImage file:
-
-    `chmod +x ./QGroundControl.AppImage`  
-    `./QGroundControl.AppImage`
+    ```
+    chmod +x ./QGroundControl.AppImage  
+    ./QGroundControl.AppImage
+    ```
     
  When QGC launches you may see an error saying 'Parameters are missing from firmware. You may be running a version of firmware which is not fully supported .....'. This is normal, just proceed.
 
@@ -127,7 +134,10 @@ Connect the hardware as the photo shown below:
 ![hardware setup](https://user-images.githubusercontent.com/77399327/126214195-7c65f4f2-6351-4708-9f5e-b52a294ba59a.jpg)
 
 3.Test the motor  
-* Launch QGC, using command `./QGroundControl.AppImage `
+* Launch QGC, using command 
+```
+./QGroundControl.AppImage 
+```
 * Frame selection (For more details about thruster allocation, please checkthis link [README_math.md](https://github.com/EEEManchester/MallARD_Pixhwak/blob/main/README_math.md)  
 ArduSub frame can be configured by setting [FRAME_CONFIG](https://www.ardusub.com/developers/full-parameter-list.html#frameconfig-frame-configuration). In addition to the built-in options, we offer two additional configurations. The Custom frame has also been modified to reflect the thruster allocation of MALLARD. For test, choose 8.  
 Click Q![Screenshot from 2021-07-20 17-06-53](https://user-images.githubusercontent.com/77399327/126358068-e0ca4cc3-65eb-4550-873f-3a1ce5251b17.png) icon --> Vehicle Setup --> Parameters.  Using the search bar: FRAME_CONFIG. Set it to 8.
@@ -154,10 +164,14 @@ Use `wstool` utility for retrieving sources and  [catkin tools](https://catkin-t
 
 **NOTE:** The source installation instructions are for the ROS Melodic release.
 
-1. Install catkin_tool and dependencies:  
-`sudo apt-get install python-catkin-tools python-rosinstall-generator -y`  
+1. Install catkin_tool and dependencies: 
+``` 
+sudo apt-get install python-catkin-tools python-rosinstall-generator -y
+```  
 2. For Noetic use that:  
-`sudo apt install python3-catkin-tools python3-rosinstall-generator python3-osrf-pycommon -y`
+```
+sudo apt install python3-catkin-tools python3-rosinstall-generator python3-osrf-pycommon -y
+```
 
 3. Create the workspace: unneeded if you already has workspace
 
@@ -170,15 +184,22 @@ wstool init src
 4. Install MAVLink
 
     we use the Melodic reference for all ROS distros as it's not distro-specific and up to date
-`rosinstall_generator --rosdistro melodic mavlink | tee /tmp/mavros.rosinstall`
-
+```
+rosinstall_generator --rosdistro melodic mavlink | tee /tmp/mavros.rosinstall`
+```
 5. Install MAVROS: get source (upstream - released)  
-`rosinstall_generator --upstream mavros | tee -a /tmp/mavros.rosinstall`
+```
+rosinstall_generator --upstream mavros | tee -a /tmp/mavros.rosinstall
+```
 
 6. Create workspace & deps
 
-    `wstool merge -t src /tmp/mavros.rosinstall`  
-`gedit ~/catkin_ws/src/.rosinstall`  
+```
+wstool merge -t src /tmp/mavros.rosinstall
+``` 
+```
+gedit ~/catkin_ws/src/.rosinstall
+```  
 change   
 '- git:  
     local-name: mavros  
@@ -189,24 +210,37 @@ to
     local-name: mavros_mallard  
     uri: https://github.com/EEEManchester/mavros_mallard.git  
     version: dev'  
-`wstool update -t src -j4`  
-`rosdep install --from-paths src --ignore-src -y`
+```
+wstool update -t src -j4
+```  
+```
+rosdep install --from-paths src --ignore-src -y
+```
 
 7. Install GeographicLib datasets:  
-`sudo ./src/mavros_mallard/mavros/scripts/install_geographiclib_datasets.sh`
+```
+sudo ./src/mavros_mallard/mavros/scripts/install_geographiclib_datasets.sh
+```
 
 8. Build source   
-`catkin build`
+```
+catkin build
+```
 
 9. Make sure that you use setup.bash or setup.zsh from workspace. Else rosrun can't find nodes from this workspace.
-`source devel/setup.bash`
+```
+source devel/setup.bash
+```
 
 #### Original guides
 1. [README](https://github.com/EEEManchester/mavros_mallard/blob/master/README_MAVROS.md)
 2. [Installation instructions](https://github.com/mavlink/mavros/blob/master/mavros/README.md#installation)
 
 Before use MAVROS to drive MallARD, some parameters need to be set in QGC. 
-* Use command `./QGroundControl.AppImage ` or double click
+* Use command 
+```
+./QGroundControl.AppImage
+``` 
 * Make sure the motors are disabled in QGC. Click Q icon, and click Vehicle Setup, click parameters, using search bar: SERVO1_FUNCTION, set it to 0 (Disabled). Do the same to SERVO2_FUNCTION, SERVO3_FUNCTION, SERVO4_FUNCTION. This step can make all thrusters controlled by the signal from MAVROS.  
 ![Screenshot from 2021-07-21 10-17-10](https://user-images.githubusercontent.com/77399327/126464753-f748aeb7-415a-4fc8-a33b-feb2629fd9e6.png)
 
@@ -222,17 +256,23 @@ Connect PS4 joystick to PC via Bluebooth
  1. Press and hold the central PS Button and the Share button for three seconds until the lightbar at the top of the controller begins to flash. Next open up the Bluetooth settings on your PC then select 'Wireless Controller'.
  2. Configuring and Using a Linux-Supported Joystick with ROS:
     * Start by installing the package:   
-    `sudo apt-get install ros-melodic-joy`
+    ```
+    sudo apt-get install ros-melodic-joy
+    ```
     * Configuring the Joystick:
     Connect your joystick to your computer. Now let's see if Linux recognized your joystick.  
-    `ls /dev/input/`   
+    ```
+    ls /dev/input/
+    ```  
     You will see a listing of all of your input devices similar to below:
     ```
     by-id    event0  event2  event4  event6  event8  mouse0  mouse2  uinput
     by-path  event1  event3  event5  event7  js0     mice    mouse1  
     ```
     As you can see above, the joystick devices are referred to by jsX ; in this case, our joystick is js0. Let's make sure that the joystick is working. 
-    `sudo jstest /dev/input/jsX`
+    ```
+    sudo jstest /dev/input/jsX
+    ```
     You will see the output of the joystick on the screen. Move the joystick around to see the data change. 
     ```
     Driver version is 2.1.0.
@@ -243,11 +283,17 @@ Connect PS4 joystick to PC via Bluebooth
     ```
 
  Launch mavros nodes in shell#1:  
-`roslaunch mavors apm.launch`  
+```
+roslaunch mavors apm.launch
+```
 Launch control node(including joy node) in Shell#2:  
-`roslaunch joy2thr joy2thr.launch`  
+```
+roslaunch joy2thr joy2thr.launch
+```  
 Arm the vehicle by command in Shell#3:  
-`rosservice call /mavros/cmd/arming "value: true"` 
+```
+rosservice call /mavros/cmd/arming "value: true"
+``` 
 
 
 ### Original guides
