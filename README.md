@@ -70,7 +70,7 @@ Then
 ./waf sub
 ```
 
-After the code finishes, you can find the new firmware `ardusub.apj` in the `build/pixhawk4/bin` directory.
+After the code finishes, you can find the new firmware `ardusub.apj` in the `build/Pixhawk4/bin` directory.
 
 ### Upload
 #### Using WAF
