@@ -141,10 +141,13 @@ ArduSub frame can be configured by setting [RAME_CONFIG](https://www.ardusub.com
 
 You may use QGC to select the required frame in its parameter editing panel:
 ![frame_config](https://user-images.githubusercontent.com/77399327/126155642-84f4bfde-8636-4cd2-a41a-349287011d40.png)
-* Make sure the motrors you want to test are able. Click Q![Screenshot from 2021-07-20 17-06-53](https://user-images.githubusercontent.com/77399327/126358068-e0ca4cc3-65eb-4550-873f-3a1ce5251b17.png) icon --> Vehicle Setup --> Parameters. Using the search bar: SERVO1_FUNCTION. Check it has been set as follow and do the same steps to SERVO2_FUNCTIONN, SERVO3_FUNCTION, SERVO4_FUNCTION.
+* Make sure the motrors you want to test are able.  
+Click Q![Screenshot from 2021-07-20 17-06-53](https://user-images.githubusercontent.com/77399327/126358068-e0ca4cc3-65eb-4550-873f-3a1ce5251b17.png) icon --> Vehicle Setup --> Parameters. Using the search bar: SERVO1_FUNCTION. Check it has been set as follow and do the same steps to SERVO2_FUNCTIONN, SERVO3_FUNCTION, SERVO4_FUNCTION.
 ![Screenshot from 2021-07-21 10-34-34](https://user-images.githubusercontent.com/77399327/126467201-8a5fb0f8-61a5-49fb-982b-ad57c3400842.png)
 * Add a virtual joystick  
-Click Q icon -->  Application settings --> General --> tick virtual joystick ![Screenshot from 2021-07-20 17-09-21](https://user-images.githubusercontent.com/77399327/126358419-3b18b2d9-4661-4400-aa69-0b49365d3181.png)   
+Click Q icon -->  Application settings --> General --> tick virtual joystick ![Screenshot from 2021-07-20 17-09-21](https://user-images.githubusercontent.com/77399327/126358419-3b18b2d9-4661-4400-aa69-0b49365d3181.png)
+*  Make sure you system ID is 255.  In Parameters, using search bar: SYSID_MYGCS, make sure it has been set to 255.  
+![Screenshot from 2021-07-21 12-07-26](https://user-images.githubusercontent.com/77399327/126479324-263afdb9-82ff-41af-8063-a9e6af0a489d.png)   
 * Arm and using the virtual joystick to make the thruster move
 
 
