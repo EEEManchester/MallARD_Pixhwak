@@ -174,7 +174,7 @@ wstool init src
     we use the Melodic reference for all ROS distros as it's not distro-specific and up to date
 `rosinstall_generator --rosdistro melodic mavlink | tee /tmp/mavros.rosinstall`
 
-5. Install MAVROS: get source (upstream - released)
+5. Install MAVROS: get source (upstream - released)  
 `rosinstall_generator --upstream mavros | tee -a /tmp/mavros.rosinstall`
 
 6. Create workspace & deps
