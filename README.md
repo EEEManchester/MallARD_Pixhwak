@@ -214,12 +214,14 @@ to
 ## 3. Control MallARD via MAVROS
 Before use MAVROS to drive MallARD, some parameters need to be set in QGC. 
 * Use command `./QGroundControl.AppImage ` or double click
-* Make sure the motors are disabled in QGC. Click Q icon, and click Vehicle Setup, click parameters, using search bar: SERVO1_FUNCTION, set it to 0 (Disabled). Do the same to SERVO2_FUNCTION, SERVO3_FUNCTION, SERVO4_FUNCTION. This step can make all thrusters full controlled from MAVROS.
+* Make sure the motors are disabled in QGC. Click Q icon, and click Vehicle Setup, click parameters, using search bar: SERVO1_FUNCTION, set it to 0 (Disabled). Do the same to SERVO2_FUNCTION, SERVO3_FUNCTION, SERVO4_FUNCTION. This step can make all thrusters controlled by the signal from MAVROS.  
 ![Screenshot from 2021-07-21 10-17-10](https://user-images.githubusercontent.com/77399327/126464753-f748aeb7-415a-4fc8-a33b-feb2629fd9e6.png)
 
-* Back to QGC desktop. Click Q icon, and click Vehicle setup, click Paramters, using search bar: SYSID_MYGCS, set SYSID_MYGCS = 1  
+* In Vehicle setup, Paramters, using search bar: SYSID_MYGCS, set SYSID_MYGCS = 1 .This set can make sure the GCS talks to MAVROS.  
 ![Screenshot from 2021-07-20 17-34-36](https://user-images.githubusercontent.com/77399327/126361966-96e3e88f-519c-4faa-ba2a-d746de810c40.png)
 
+* Switch the frame from test mode to MallARD thruster allocation mode. In Vehicle Setup, Parameters, using search bar: FRAME_CONFIG. Set it to 7.  
+![Screenshot from 2021-07-21 12-30-58](https://user-images.githubusercontent.com/77399327/126482055-ba55b727-eb82-48bd-bcf4-d08ef16f6c52.png)
 * Back to QGC desktop. Click Q icon, and click Application Setting, click AutoConnection to following devices, just tick the UDP and distick the rest as the picture shown below:  
 ![tick UPD](https://user-images.githubusercontent.com/77399327/126353159-63572722-cf02-4400-9b32-6df1c6168384.png)  
 
