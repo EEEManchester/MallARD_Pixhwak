@@ -13,7 +13,7 @@ AP_MOTORS_MOT_4|0|0|0|1.0f|0|0|4|
 
 
 ## SUB_FRAME_CUSTOM mode
-This is the matrix for SUB_FRAME_CUSTOM mode. It is modified for MallARD (new version [Figure]) thruster allocation.
+This is the matrix for SUB_FRAME_CUSTOM mode. It is modified for MallARD (new version [Figure]) thruster allocation. When you put input in vertical of analog stick (move along x-axis), motor 1 and motor 2 will produce a force (F_u) that push the vehicle move towards positive X. Vice versa.   
    
 ![MallARD thruster allocation](https://user-images.githubusercontent.com/77399327/126422035-619c7d1b-188c-498d-b6d6-6fc6c49fff33.png)
 
