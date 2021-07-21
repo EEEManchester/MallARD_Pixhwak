@@ -154,7 +154,7 @@ A custom MAVROS for MALLARD
 Use `wstool` utility for retrieving sources and  [catkin tools](https://catkin-tools.readthedocs.io/en/latest/) for build.
 
 
-NOTE: The source installation instructions are for the ROS Melodic release.
+**NOTE:** The source installation instructions are for the ROS Melodic release.
 
 1. Install catkin_tool and dependencies:  
 `sudo apt-get install python-catkin-tools python-rosinstall-generator -y`  
