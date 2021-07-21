@@ -206,24 +206,26 @@ to
 #### Original guides
 1. [README](https://github.com/EEEManchester/mavros_mallard/blob/master/README_MAVROS.md)
 2. [Installation instructions](https://github.com/mavlink/mavros/blob/master/mavros/README.md#installation)
-## 3. Run the control node
+## 3. Control MallARD via MAVROS
 Before use MAVROS to drive MallARD, some parameters need to be set in QGC. 
 * Use command `./QGroundControl.AppImage ` or double click
+* Make sure the motors are disabled in QGC. Click Q icon, and click Vehicle Setup, click parameters, using search bar: SERVO1_FUNCTION, set it to 0 (Disabled). Do the same to SERVO2_FUNCTION, SERVO3_FUNCTION, SERVO4_FUNCTION. This step can make all thrusters full controlled from MAVROS.
+![Screenshot from 2021-07-21 10-17-10](https://user-images.githubusercontent.com/77399327/126464753-f748aeb7-415a-4fc8-a33b-feb2629fd9e6.png)
 
-* After enter in the QGC, Click Q icon, and click Vehicle setup, click Paramters, using search bar: SYSID_MYGCS, set SYSID_MYGCS = 1  
+* Back to QGC desktop. Click Q icon, and click Vehicle setup, click Paramters, using search bar: SYSID_MYGCS, set SYSID_MYGCS = 1  
 ![Screenshot from 2021-07-20 17-34-36](https://user-images.githubusercontent.com/77399327/126361966-96e3e88f-519c-4faa-ba2a-d746de810c40.png)
 
-* Back to QGC. Click Q icon, and click Application Setting, click AutoConnection to following devices, just tick the UDP and distick the rest as the picture shown below:  
+* Back to QGC desktop. Click Q icon, and click Application Setting, click AutoConnection to following devices, just tick the UDP and distick the rest as the picture shown below:  
 ![tick UPD](https://user-images.githubusercontent.com/77399327/126353159-63572722-cf02-4400-9b32-6df1c6168384.png)  
 
 Connect PS4 joystick to PC via Bluebooth
  1. Press and hold the central PS Button and the Share button for three seconds until the lightbar at the top of the controller begins to flash. Next open up the Bluetooth settings on your PC then select 'Wireless Controller'.
  2. Configuring and Using a Linux-Supported Joystick with ROS:
-    * Start by installing the package: 
+    * Start by installing the package:   
     `sudo apt-get install ros-melodic-joy`
     * Configuring the Joystick:
-    Connect your joystick to your computer. Now let's see if Linux recognized your joystick.
-    `ls /dev/input/` 
+    Connect your joystick to your computer. Now let's see if Linux recognized your joystick.  
+    `ls /dev/input/`   
     You will see a listing of all of your input devices similar to below:
     ```
     by-id    event0  event2  event4  event6  event8  mouse0  mouse2  uinput
