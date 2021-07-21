@@ -25,3 +25,10 @@ AP_MOTORS_MOT_1|0|0|-1.0f|0|1.0f|1.0f|1|
 AP_MOTORS_MOT_2|0|0|1.0f|0|1.0f|-1.0f|2|  
 AP_MOTORS_MOT_3|0|0|1.0f|0|-1.0f|1.0f|3|
 AP_MOTORS_MOT_4|0|0|-1.0f|0|-1.0f|-1.0f|4|
+
+
+## Refenence
+1. [ArduPilot_MALLARD](https://github.com/EEEManchester/ArduPilot_MALLARD/blob/733f57fa1fcc381113ecd4b01095a1f895e5a536/libraries/AP_Motors/AP_Motors6DOF.cpp)
+
+2. [Model Identification of a Small Omnidirectional Aquatic Surface
+Vehicle: a Practical Implementation](https://ieeexplore.ieee.org/document/9341142)
