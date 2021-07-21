@@ -103,10 +103,10 @@ Before installing QGroundControl for the first time:
 
 1. On the command prompt enter:
     Add the user's name to the dialout group, not the user root even though the command is run as root:   
-    `sudo usermod -a -G dialout $USER`
-    Remove the modem manager and grant yourself permissions to access the serial port: 
+    `sudo usermod -a -G dialout $USER`  
+    Remove the modem manager and grant yourself permissions to access the serial port:   
     `sudo apt-get remove modemmanager -y`  
-    Install GStreamer in order to support video streaming (probably not be use in MallARD):
+    Install GStreamer in order to support video streaming (probably not be use in MallARD):  
     `sudo apt install gstreamer1.0-plugins-bad gstreamer1.0-libav gstreamer1.0-gl -y`
 
 2. Logout and login again to enable the change to user permissions.
