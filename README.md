@@ -171,7 +171,7 @@ wstool init src
 ```
 4. Install MAVLink
 
-we use the Melodic reference for all ROS distros as it's not distro-specific and up to date
+    we use the Melodic reference for all ROS distros as it's not distro-specific and up to date
 `rosinstall_generator --rosdistro melodic mavlink | tee /tmp/mavros.rosinstall`
 
 5. Install MAVROS: get source (upstream - released)
