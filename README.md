@@ -146,7 +146,7 @@ Click Q![Screenshot from 2021-07-20 17-06-53](https://user-images.githubusercont
 ![Screenshot from 2021-07-21 10-34-34](https://user-images.githubusercontent.com/77399327/126467201-8a5fb0f8-61a5-49fb-982b-ad57c3400842.png)
 * Add a virtual joystick  
 Click Q icon -->  Application settings --> General --> tick virtual joystick ![Screenshot from 2021-07-20 17-09-21](https://user-images.githubusercontent.com/77399327/126358419-3b18b2d9-4661-4400-aa69-0b49365d3181.png)
-*  Make sure you system ID is 255.  In Parameters, using search bar: SYSID_MYGCS, make sure it has been set to 255.  
+    *  Make sure you system ID is 255.  In Parameters, using search bar: SYSID_MYGCS, make sure it has been set to 255.  
 ![Screenshot from 2021-07-21 12-07-26](https://user-images.githubusercontent.com/77399327/126479324-263afdb9-82ff-41af-8063-a9e6af0a489d.png)   
 * Arm and using the virtual joystick to make the thruster move
 
