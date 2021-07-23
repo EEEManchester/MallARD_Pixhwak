@@ -287,7 +287,7 @@ Click Q icon, and click Vehicle Setup, click parameters, using search bar: SERVO
     Axes:  0:     0  1:     0  2:     0  3:     0  4:     0  5:     0 Buttons:  0:off  1:off  2:off  3:off  4:off  5:off  6:off  7:off  8:off  9:off 10:off 11:off
     ```
 ### Control MallARD via joystick via ROS
-* Connect the pixhawk 4 to the PC and connect MallAARD's ESCs to the pichawk 4. Power the ESCs and connect ESCs to thrusters.
+* Connect the pixhawk 4 to the PC and connect MallAARD's ESCs to the pixhawk 4. Power the ESCs and connect ESCs to thrusters.
 
 * Close QGC
 
