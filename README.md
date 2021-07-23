@@ -1,5 +1,5 @@
 # MallARD_Pixhwak
-This repository is about controlling the thrusters in MallARD via MAVROS using Pixhawk4. Two tasks needs to be completed. First is to compile the custom firmware for Pixhawk4 named Audusub and flash it onto Pixhawk 4. The second is installation of MAVROS and MAVLINK. The two submodules in this repository contain source files of ythe custom Ardusub firmware and MAVROS.
+This repository is about controlling the thrusters in MallARD via MAVROS using Pixhawk4. Two tasks needs to be completed. First is to compile the custom firmware for Pixhawk4 named Audusub and flash it onto Pixhawk 4. The second is installation of MAVROS and MAVLINK. The two submodules in this repository contain source files of the custom Ardusub firmware and MAVROS.
 
 # Required hardware
 * Pixhawk 4 flight controller
@@ -157,7 +157,7 @@ In Parameters, using search bar: SYSID_MYGCS, make sure it has been set to 255 (
 * Add a virtual joystick:  
 Click Q icon -->  Application settings --> General --> tick virtual joystick ![Screenshot from 2021-07-20 17-09-21](https://user-images.githubusercontent.com/77399327/126358419-3b18b2d9-4661-4400-aa69-0b49365d3181.png)    
 * Arm and using the virtual joystick to make the thruster move:  
-Use JOYSTICK_PWM_CONTROL frame and when you put input on x thruster 1 should meve but no others. input on y only thruster 2 moves . input on yaw only thruster 3 moves. input on z only thruster 4 moves.
+Use JOYSTICK_PWM_CONTROL frame and when you put input on x thruster 1 should move but no others. input on y only thruster 2 moves . input on yaw only thruster 3 moves. input on z only thruster 4 moves.
 
 
 
@@ -249,7 +249,7 @@ Before use MAVROS to drive MallARD, some parameters need to be set in QGC. open 
 Click Q icon, and click Vehicle Setup, click parameters, using search bar: SERVO1_FUNCTION, set it to 0 (Disabled). Do the same to SERVO2_FUNCTION, SERVO3_FUNCTION, SERVO4_FUNCTION. This step can make all thrusters controlled by the signal from MAVROS.  
 ![Screenshot from 2021-07-21 10-17-10](https://user-images.githubusercontent.com/77399327/126464753-f748aeb7-415a-4fc8-a33b-feb2629fd9e6.png)
 
-* In Paramters setting, using search bar: SYSID_MYGCS, set SYSID_MYGCS = 1 .This set can make sure the GCS talks to MAVROS.  
+* In Parameters setting, using search bar: SYSID_MYGCS, set SYSID_MYGCS = 1 .This set can make sure the GCS talks to MAVROS.  
 ![Screenshot from 2021-07-20 17-34-36](https://user-images.githubusercontent.com/77399327/126361966-96e3e88f-519c-4faa-ba2a-d746de810c40.png)
 
 * Switch the frame from test mode to MallARD thruster allocation mode. In Parameters, using search bar: FRAME_CONFIG. Set it to 7.  
@@ -286,15 +286,21 @@ Click Q icon, and click Vehicle Setup, click parameters, using search bar: SERVO
     Testing ... (interrupt to exit)
     Axes:  0:     0  1:     0  2:     0  3:     0  4:     0  5:     0 Buttons:  0:off  1:off  2:off  3:off  4:off  5:off  6:off  7:off  8:off  9:off 10:off 11:off
     ```
+
+3. Joystick setup in Open QGC.   
+For the first time using joystick, it needs to be set. Open the QGC. In the Vehicle setup, find the joystick on the right bar and complete the setup step by step according to the instruction. This is the panel you may find. 
+![from iOS](https://user-images.githubusercontent.com/77399327/126820961-72e60c37-9eea-46d9-9c2f-86904befb8c6.jpg)
 ### Control MallARD via joystick via ROS
-* Connect the pixhawk 4 to the PC and connect MallAARD's ESCs to the pixhawk 4. Power the ESCs and connect ESCs to thrusters.
+* Connect the pixhawk 4 to the PC and connect MallARD's ESCs to the pixhawk 4. Power the ESCs and connect ESCs to thrusters.
 
 * Close QGC
 
- * Launch mavros nodes in shell#1:  
+* Launch mavros nodes in shell#1:  
 ```
 roslaunch mavors apm.launch
 ```
+* Open the QGC
+
 * Launch control node(including joy node) in Shell#2:  
 ```
 roslaunch joy2thr joy2thr.launch
