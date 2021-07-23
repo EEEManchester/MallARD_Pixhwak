@@ -138,25 +138,30 @@ Connect the hardware as the photo shown below:
 ```
 ./QGroundControl.AppImage 
 ```
-* Frame selection (For more details about thruster allocation, please checkthis link [README_math.md](https://github.com/EEEManchester/MallARD_Pixhwak/blob/main/README_math.md)  
-ArduSub frame can be configured by setting [FRAME_CONFIG](https://www.ardusub.com/developers/full-parameter-list.html#frameconfig-frame-configuration). In addition to the built-in options, we offer two additional configurations. The Custom frame has also been modified to reflect the thruster allocation of MALLARD 001. For test, choose 8.  
-Click Q![Screenshot from 2021-07-20 17-06-53](https://user-images.githubusercontent.com/77399327/126358068-e0ca4cc3-65eb-4550-873f-3a1ce5251b17.png) icon --> Vehicle Setup --> Parameters.  Using the search bar: FRAME_CONFIG. Set it to 8.
+Frame selection (For more details about thruster allocation, please check this link [README_math.md](https://github.com/EEEManchester/MallARD_Pixhwak/blob/main/README_math.md)  
+ArduSub frame can be configured by setting [FRAME_CONFIG](https://www.ardusub.com/developers/full-parameter-list.html#frameconfig-frame-configuration). In addition to the built-in options, we offer two additional configurations. The Custom frame has also been modified to reflect the thruster allocation of MALLARD 003.
+
+* Set the thrust allocation:  
+Click Q![Screenshot from 2021-07-20 17-06-53](https://user-images.githubusercontent.com/77399327/126358068-e0ca4cc3-65eb-4550-873f-3a1ce5251b17.png) icon --> Vehicle Setup --> Parameters.  Using the search bar: FRAME_CONFIG. Set it to 8 in advanced settings (the number associated with the joystick PWM control thrust allocation).
 You may see its parameter editing panel:  
 ![Screenshot from 2021-07-21 20-35-48](https://user-images.githubusercontent.com/77399327/126549189-31f30050-e76f-4249-88ec-97d6426c9de2.png)
-* Make sure the motrors you want to test are enable.  
- In parameters setting, using the search bar: SERVO1_FUNCTION. Check it has been set as follow and do the same steps to SERVO2_FUNCTIONN, SERVO3_FUNCTION, SERVO4_FUNCTION. YOu may see the pannel like this.  
+
+
+* Make sure the motors you want to test are enabled:     
+ In parameters setting, using the search bar: SERVO1_FUNCTION. Check it has been set to motor1 (sometimes displayed as 33). Do the same steps to SERVO2_FUNCTION (Motor2 or 34), SERVO3_FUNCTION (Motor3 or 35), SERVO4_FUNCTION (motor4 or 36). You may see the panel like this.
 ![Screenshot from 2021-07-21 10-34-34](https://user-images.githubusercontent.com/77399327/126467201-8a5fb0f8-61a5-49fb-982b-ad57c3400842.png)
 
-* Make sure you system ID is 255.  In Parameters, using search bar: SYSID_MYGCS, make sure it has been set to 255.  
+* Make sure you system ID is 255:  
+In Parameters, using search bar: SYSID_MYGCS, make sure it has been set to 255 (Advanced settings).  
 ![Screenshot from 2021-07-21 12-07-26](https://user-images.githubusercontent.com/77399327/126479324-263afdb9-82ff-41af-8063-a9e6af0a489d.png) 
-* Add a virtual joystick  
+* Add a virtual joystick:  
 Click Q icon -->  Application settings --> General --> tick virtual joystick ![Screenshot from 2021-07-20 17-09-21](https://user-images.githubusercontent.com/77399327/126358419-3b18b2d9-4661-4400-aa69-0b49365d3181.png)    
-* Arm and using the virtual joystick to make the thruster move. Use JOYSTICK_PWM_CONTROL frame and when you put input on x thruster 1 should meve but no others. input on y only thruster 2 moves . input on yaw only thruster 3 moves. input on z only thruster 4 moves.
+* Arm and using the virtual joystick to make the thruster move:  
+Use JOYSTICK_PWM_CONTROL frame and when you put input on x thruster 1 should meve but no others. input on y only thruster 2 moves . input on yaw only thruster 3 moves. input on z only thruster 4 moves.
 
 
 
 ## 2. Control thrusters via ROS using MAVROS and MAVLINK - 
-A custom MAVROS for MALLARD  
 ### Source installation  
 
 Use `wstool` utility for retrieving sources and  [catkin tools](https://catkin-tools.readthedocs.io/en/latest/) for build.
@@ -168,7 +173,7 @@ Use `wstool` utility for retrieving sources and  [catkin tools](https://catkin-t
 ``` 
 sudo apt-get install python-catkin-tools python-rosinstall-generator -y
 ```  
-2. For Noetic use that:  
+2. For Noetic use:  
 ```
 sudo apt install python3-catkin-tools python3-rosinstall-generator python3-osrf-pycommon -y
 ```
@@ -234,16 +239,14 @@ source devel/setup.bash
 
 10. Make the control node executable.
 ```
-cd /src/mavros_mallard/joy2thr/src
+cd src/mavros_mallard/joy2thr/src
 chmod +x joyControl.py
 ```
+### QGC configuration
+Before use MAVROS to drive MallARD, some parameters need to be set in QGC. open QGC
 
-Before use MAVROS to drive MallARD, some parameters need to be set in QGC. 
-* Use command 
-```
-./QGroundControl.AppImage
-``` 
-* Make sure the motors are disabled in QGC. Click Q icon, and click Vehicle Setup, click parameters, using search bar: SERVO1_FUNCTION, set it to 0 (Disabled). Do the same to SERVO2_FUNCTION, SERVO3_FUNCTION, SERVO4_FUNCTION. This step can make all thrusters controlled by the signal from MAVROS.  
+* Make sure the motors are disabled in QGC:  
+Click Q icon, and click Vehicle Setup, click parameters, using search bar: SERVO1_FUNCTION, set it to 0 (Disabled). Do the same to SERVO2_FUNCTION, SERVO3_FUNCTION, SERVO4_FUNCTION. This step can make all thrusters controlled by the signal from MAVROS.  
 ![Screenshot from 2021-07-21 10-17-10](https://user-images.githubusercontent.com/77399327/126464753-f748aeb7-415a-4fc8-a33b-feb2629fd9e6.png)
 
 * In Paramters setting, using search bar: SYSID_MYGCS, set SYSID_MYGCS = 1 .This set can make sure the GCS talks to MAVROS.  
@@ -254,8 +257,8 @@ Before use MAVROS to drive MallARD, some parameters need to be set in QGC.
 * Back to QGC desktop. Click Q icon, and click Application Setting, click AutoConnection to following devices, just tick the UDP and distick the rest as the picture shown below:  
 ![tick UPD](https://user-images.githubusercontent.com/77399327/126353159-63572722-cf02-4400-9b32-6df1c6168384.png)  
 
-Connect PS4 joystick to PC via Bluebooth
- 1. Press and hold the central PS Button and the Share button for three seconds until the lightbar at the top of the controller begins to flash. Next open up the Bluetooth settings on your PC then select 'Wireless Controller'.
+### Connect PS4 joystick to PC via Bluebooth
+ 1. Press and hold the central PS Button and the Share button for three seconds until the lightbar at the top of the controller begins to flash. Next open up the Bluetooth settings on your PC then select 'Wireless Controller'. You can also connect the joystick via USB. 
  2. Configuring and Using a Linux-Supported Joystick with ROS:
     * Start by installing the package:   
     ```
@@ -283,20 +286,24 @@ Connect PS4 joystick to PC via Bluebooth
     Testing ... (interrupt to exit)
     Axes:  0:     0  1:     0  2:     0  3:     0  4:     0  5:     0 Buttons:  0:off  1:off  2:off  3:off  4:off  5:off  6:off  7:off  8:off  9:off 10:off 11:off
     ```
+### Control MallARD via joystick via ROS
+* Connect the pixhawk 4 to the PC and connect MallAARD's ESCs to the pichawk 4. Power the ESCs and connect ESCs to thrusters.
 
- Launch mavros nodes in shell#1:  
+* Close QGC
+
+ * Launch mavros nodes in shell#1:  
 ```
 roslaunch mavors apm.launch
 ```
-Launch control node(including joy node) in Shell#2:  
+* Launch control node(including joy node) in Shell#2:  
 ```
 roslaunch joy2thr joy2thr.launch
 ```  
-Arm the vehicle by command in Shell#3:  
+* Arm the vehicle by command in Shell#3:  
 ```
 rosservice call /mavros/cmd/arming "value: true"
 ``` 
-Disarm:
+* Disarm:
 ```
 rosservice call /mavros/cmd/arming "value: false"
 ```
