@@ -232,10 +232,6 @@ catkin build
 source devel/setup.bash
 ```
 
-#### Original guides
-1. [README](https://github.com/EEEManchester/mavros_mallard/blob/master/README_MAVROS.md)
-2. [Installation instructions](https://github.com/mavlink/mavros/blob/master/mavros/README.md#installation)
-
 Before use MAVROS to drive MallARD, some parameters need to be set in QGC. 
 * Use command 
 ```
@@ -297,4 +293,6 @@ rosservice call /mavros/cmd/arming "value: true"
 
 
 ### Original guides
-[ROS Wiki](http://wiki.ros.org/joy/Tutorials/ConfiguringALinuxJoystick)
+1. [README](https://github.com/EEEManchester/mavros_mallard/blob/master/README_MAVROS.md)
+2. [Installation instructions](https://github.com/mavlink/mavros/blob/master/mavros/README.md#installation)
+3. [ROS Wiki](http://wiki.ros.org/joy/Tutorials/ConfiguringALinuxJoystick)
