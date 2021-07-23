@@ -296,6 +296,10 @@ Arm the vehicle by command in Shell#3:
 ```
 rosservice call /mavros/cmd/arming "value: true"
 ``` 
+Disarm:
+```
+rosservice call /mavros/cmd/arming "value: false"
+```
 
 
 ### Original guides
