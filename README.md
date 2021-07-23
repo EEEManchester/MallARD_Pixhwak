@@ -232,6 +232,12 @@ catkin build
 source devel/setup.bash
 ```
 
+10. Make the control node executable.
+```
+cd /src/mavros_mallard/joy2thr/src
+chmod +x joyControl.py
+```
+
 Before use MAVROS to drive MallARD, some parameters need to be set in QGC. 
 * Use command 
 ```
