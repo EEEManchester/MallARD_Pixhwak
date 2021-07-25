@@ -252,8 +252,10 @@ Before use MAVROS to drive MallARD, some parameters need to be set in QGC. open 
 ![Screenshot from 2021-07-21 12-30-58](https://user-images.githubusercontent.com/77399327/126482055-ba55b727-eb82-48bd-bcf4-d08ef16f6c52.png)
 * Back to QGC desktop. Click Q icon, and click Application Setting, click AutoConnection to following devices, just tick the UDP and distick the rest as the picture shown below:  
 ![tick UPD](https://user-images.githubusercontent.com/77399327/126353159-63572722-cf02-4400-9b32-6df1c6168384.png)  
-* Enable the joystick of QGC. This step can ensure that your signal of joystick comes from the MAVROS. In Vehicle Setup, Joystick, don't tick this box.
-![Screenshot from 2021-07-25 18-01-15](https://user-images.githubusercontent.com/77399327/126907357-7755431d-2ccb-4dac-987c-e40e6bee7542.png)  
+* Enable the joystick of QGC. This step can ensure that your signal of joystick comes from the MAVROS. In Vehicle Setup, Joystick, don't tick this box.    
+
+
+  ![Screenshot from 2021-07-25 18-01-15](https://user-images.githubusercontent.com/77399327/126907357-7755431d-2ccb-4dac-987c-e40e6bee7542.png)  
 
 ### Connect PS4 joystick to PC via Bluetooth
  1. Press and hold the central PS Button and the Share button for three seconds until the lightbar at the top of the controller begins to flash. Next open up the Bluetooth settings on your PC then select 'Wireless Controller'. You can also connect the joystick via USB. 
