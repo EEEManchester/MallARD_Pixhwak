@@ -245,10 +245,6 @@ chmod +x joyControl.py
 ### QGC configuration
 Before use MAVROS to drive MallARD, some parameters need to be set in QGC. open QGC
 
-* Make sure the motors are disabled in QGC:  
-Click Q icon, and click Vehicle Setup, click parameters, using search bar: SERVO1_FUNCTION, set it to 0 (Disabled). Do the same to SERVO2_FUNCTION, SERVO3_FUNCTION, SERVO4_FUNCTION. This step can make all thrusters controlled by the signal from MAVROS.  
-![Screenshot from 2021-07-21 10-17-10](https://user-images.githubusercontent.com/77399327/126464753-f748aeb7-415a-4fc8-a33b-feb2629fd9e6.png)
-
 * In Parameters setting, using search bar: SYSID_MYGCS, set SYSID_MYGCS = 1 .This set can make sure the GCS talks to MAVROS.  
 ![Screenshot from 2021-07-20 17-34-36](https://user-images.githubusercontent.com/77399327/126361966-96e3e88f-519c-4faa-ba2a-d746de810c40.png)
 
@@ -257,7 +253,7 @@ Click Q icon, and click Vehicle Setup, click parameters, using search bar: SERVO
 * Back to QGC desktop. Click Q icon, and click Application Setting, click AutoConnection to following devices, just tick the UDP and distick the rest as the picture shown below:  
 ![tick UPD](https://user-images.githubusercontent.com/77399327/126353159-63572722-cf02-4400-9b32-6df1c6168384.png)  
 
-### Connect PS4 joystick to PC via Bluebooth
+### Connect PS4 joystick to PC via Bluetooth
  1. Press and hold the central PS Button and the Share button for three seconds until the lightbar at the top of the controller begins to flash. Next open up the Bluetooth settings on your PC then select 'Wireless Controller'. You can also connect the joystick via USB. 
  2. Configuring and Using a Linux-Supported Joystick with ROS:
     * Start by installing the package:   
