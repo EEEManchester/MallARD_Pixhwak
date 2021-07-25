@@ -148,7 +148,7 @@ You may see its parameter editing panel:
 
 
 * Make sure the motors you want to test are enabled:     
- In parameters setting, using the search bar: SERVO1_FUNCTION. Check it has been set to motor1 (sometimes displayed as 33). Do the same steps to SERVO2_FUNCTION (Motor2 or 34), SERVO3_FUNCTION (Motor3 or 35), SERVO4_FUNCTION (motor4 or 36). You may see the panel like this.
+ In parameters setting, using the search bar: SERVO1_FUNCTION. Check it has been set to motor1 (sometimes displayed as 33). Do the same steps to SERVO2_FUNCTION (Motor2 or 34), SERVO3_FUNCTION (Motor3 or 35), SERVO4_FUNCTION (motor4 or 36). You may see the panel like this.  
 ![Screenshot from 2021-07-21 10-34-34](https://user-images.githubusercontent.com/77399327/126467201-8a5fb0f8-61a5-49fb-982b-ad57c3400842.png)
 
 * Make sure you system ID is 255:  
