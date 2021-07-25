@@ -252,7 +252,8 @@ Before use MAVROS to drive MallARD, some parameters need to be set in QGC. open 
 ![Screenshot from 2021-07-21 12-30-58](https://user-images.githubusercontent.com/77399327/126482055-ba55b727-eb82-48bd-bcf4-d08ef16f6c52.png)
 * Back to QGC desktop. Click Q icon, and click Application Setting, click AutoConnection to following devices, just tick the UDP and distick the rest as the picture shown below:  
 ![tick UPD](https://user-images.githubusercontent.com/77399327/126353159-63572722-cf02-4400-9b32-6df1c6168384.png)  
-
+* Enable the joystick of QGC. This step can ensure that your signal of joystick comes from the MAVROS. In Vehicle Setup, Joystick, don't tick this box. 
+![Screenshot from 2021-07-25 18-01-15](https://user-images.githubusercontent.com/77399327/126907357-7755431d-2ccb-4dac-987c-e40e6bee7542.png)
 ### Connect PS4 joystick to PC via Bluetooth
  1. Press and hold the central PS Button and the Share button for three seconds until the lightbar at the top of the controller begins to flash. Next open up the Bluetooth settings on your PC then select 'Wireless Controller'. You can also connect the joystick via USB. 
  2. Configuring and Using a Linux-Supported Joystick with ROS:
@@ -283,9 +284,6 @@ Before use MAVROS to drive MallARD, some parameters need to be set in QGC. open 
     Axes:  0:     0  1:     0  2:     0  3:     0  4:     0  5:     0 Buttons:  0:off  1:off  2:off  3:off  4:off  5:off  6:off  7:off  8:off  9:off 10:off 11:off
     ```
 
-3. Joystick setup in Open QGC.   
-For the first time using joystick, it needs to be set. Open the QGC. In the Vehicle setup, find the joystick on the right bar and complete the setup step by step according to the instruction. This is the panel you may find. 
-![from iOS](https://user-images.githubusercontent.com/77399327/126820961-72e60c37-9eea-46d9-9c2f-86904befb8c6.jpg)
 ### Control MallARD via joystick via ROS
 * Connect the pixhawk 4 to the PC and connect MallARD's ESCs to the pixhawk 4. Power the ESCs and connect ESCs to thrusters.
 
