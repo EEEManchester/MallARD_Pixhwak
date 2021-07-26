@@ -11,7 +11,7 @@ Each movement of command from joystick can make the corresponding individual thr
 τ = [X, Y, Z, R]<sup>T</sup> is the input control signal from joystick. X means the  input in stick(left) vertical. Y means input in stick(left) horizontal. Z means input in stick(right) vertical. R means input in stick(right) horizontal.  
 τ<sub>m</sub> = [M<sub>1</sub> M<sub>2</sub> M<sub>3</sub> M<sub>4</sub>]<sup>T</sup> is the movement of each motor.  
 T is thruster allocation matrix, which can be written as:
-$$
+  $$
 T = \begin{bmatrix}
 1&0&0&0\\
 0&1&0&0\\
