@@ -33,7 +33,7 @@ The thruster allocation is used to control MallARD_003.
 
 τ = [U, V, R]<sup>T</sup> is force/moment vector.  
 τ<sub>u</sub> = [F<sub>1</sub> F<sub>2</sub> F<sub>3</sub> F<sub>4</sub>]<suP>T</sup> is the vector of force generated from the thrusters.  
-T is thruster allocation matrix. 
+T is thruster allocation matrix.   
 ![Screenshot from 2021-07-27 16-57-56](https://user-images.githubusercontent.com/77399327/127187122-f90e8c6e-7295-4446-9f60-0f3701d2bd6d.png)
 
 
