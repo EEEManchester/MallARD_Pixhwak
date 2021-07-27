@@ -48,9 +48,9 @@ T<sup>+</sup> is the is the Moore-Penrose inverse of T, which can be written as:
 ![Screenshot from 2021-07-27 17-06-10](https://user-images.githubusercontent.com/77399327/127188439-29cb2fff-8649-445c-af06-93e1e75cb18a.png)
 
 
-For MallARD_003, ly₁=ly₂=ly₃=ly₄=0.15m, lx₁=lx₂=lx₃=lx₄=0.205m, θ₁=3/4π, θ₂=5/4π, θ₃=1/4π, θ₄=7/4π
+For MallARD_003, ly₁=ly₂=ly₃=ly₄=0.15m, lx₁=lx₂=lx₃=lx₄=0.205m, θ₁=3/4π, θ₂=5/4π, θ₃=1/4π, θ₄=7/4π  
 
-
+Write the T<sup>+</sup> in the factor table in firmware:
 
 
 | Motor | Roll Factor | Pitch Factor | Yaw Factor | Throttle Factor | Forward Factor | Lateral Factor | Testing Order |
