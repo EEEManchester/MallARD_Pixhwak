@@ -10,34 +10,12 @@ Each movement of command from joystick can make the corresponding individual thr
 
 τ = [X, Y, Z, R]<sup>T</sup> is the input control signal from joystick. X means the  input in stick(left) vertical. Y means input in stick(left) horizontal. Z means input in stick(right) vertical. R means input in stick(right) horizontal.  
 τ<sub>m</sub> = [M<sub>1</sub> M<sub>2</sub> M<sub>3</sub> M<sub>4</sub>]<sup>T</sup> is the movement of each motor.  
-T is thruster allocation matrix, which can be written as:
-  $$
-T = \begin{bmatrix}
-1&0&0&0\\
-0&1&0&0\\
-0&0&1&0\\
-0&0&0&1
-\end{bmatrix}
-$$
+T is thruster allocation matrix, which can be written as:    
+![Screenshot from 2021-07-27 16-50-04](https://user-images.githubusercontent.com/77399327/127185861-0f9bf090-6554-4931-ad20-b21db70b1a3a.png)  
 T<sup>+</sup> is the inverse of T and T = T<sup>+</sup>. So the relationship between control demand and individual actuator demand is given by:   
 τ<sub>m</sub> = T * τ, which is shown as:
 
-$$
-\begin{bmatrix}
-M₁\\M₂\\M₃\\M₄
-\end{bmatrix}
- = 
-\begin{bmatrix}
-1&0&0&0\\
-0&1&0&0\\
-0&0&1&0\\
-0&0&0&1
-\end{bmatrix}
-
-\begin{bmatrix}
-X\\Y\\Z\\R
-\end{bmatrix}
-$$
+![Screenshot from 2021-07-27 16-55-22](https://user-images.githubusercontent.com/77399327/127186898-4a65fea5-94b4-40c2-a222-45e37b8c3e55.png)
 
 Write the T<sup>+</sup> in the factor table in firmware:
 
@@ -56,54 +34,21 @@ The thruster allocation is used to control MallARD_003.
 τ = [U, V, R]<sup>T</sup> is force/moment vector.  
 τ<sub>u</sub> = [F<sub>1</sub> F<sub>2</sub> F<sub>3</sub> F<sub>4</sub>]<suP>T</sup> is the vector of force generated from the thrusters.  
 T is thruster allocation matrix. 
-$$
-T = \begin{bmatrix}
-cosθ₁&cosθ₂&cosθ₃&cosθ₄\\
-sinθ₁&sinθ₂&sinθ₃&sinθ₄\\
-ly₁cosθ₁ - lx₁sinθ₁&-ly₂cosθ₂ - lx₂sinθ₂&ly₃cosθ₃ + lx₃sinθ₃&-ly₄cosθ₄ + lx₄sinθ₄\\
-\end{bmatrix}
-$$
+![Screenshot from 2021-07-27 16-57-56](https://user-images.githubusercontent.com/77399327/127187122-f90e8c6e-7295-4446-9f60-0f3701d2bd6d.png)
+
 
 τ = T * τ<sub>u</sub>
 This can be written as:
-$$
-\begin{bmatrix}
-U\\V\\R
-\end{bmatrix} = 
-
-\begin{bmatrix}
-cosθ₁&cosθ₂&cosθ₃&cosθ₄\\
-sinθ₁&sinθ₂&sinθ₃&sinθ₄\\
-ly₁cosθ₁ - lx₁sinθ₁&-ly₂cosθ₂ - lx₂sinθ₂&ly₃cosθ₃ + lx₃sinθ₃&-ly₄cosθ₄ + lx₄sinθ₄\\
-\end{bmatrix}
-
-\begin{bmatrix}
-F₁\\F₂\\F₃\\F₄
-\end{bmatrix}
-$$
+![Screenshot from 2021-07-27 17-03-20](https://user-images.githubusercontent.com/77399327/127188027-a81f8ac1-6a06-4d81-971c-f96803b8a649.png)
 
 Rearrange the equation:
 τ<sub>u</sub> = T<sup>+</sup> τ   
 T<sup>+</sup> is the is the Moore-Penrose inverse of T, which can be written as:
 
-$$
-\begin{bmatrix}
-F₁\\F₂\\F₃\\F₄
-\end{bmatrix}
- = 
-\begin{bmatrix}
-0.242&-0.466&-1.494\\
--0.289&-0.289&0.863\\
-0.418&0.438&0.863\\
--0.466&0.241&-1.493
-\end{bmatrix}
+![Screenshot from 2021-07-27 17-06-10](https://user-images.githubusercontent.com/77399327/127188439-29cb2fff-8649-445c-af06-93e1e75cb18a.png)
 
-\begin{bmatrix}
-U\\V\\R
-\end{bmatrix}
-$$
 
-For MallARD_003, ly₁=ly₂=ly₃=ly₄=0.15m, lx₁=lx₂=lx₃=lx₄=0.205m, $θ₁=\frac{3}{4}π$, $θ₂=\frac{5}{4}π$, $θ₃=\frac{1}{4}π$, $θ₄=\frac{7}{4}π$  
+For MallARD_003, ly₁=ly₂=ly₃=ly₄=0.15m, lx₁=lx₂=lx₃=lx₄=0.205m, θ₁=3/4π, θ₂=5/4π, θ₃=1/4π, θ₄=7/4π
 
 
 
