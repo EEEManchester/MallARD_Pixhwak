@@ -45,7 +45,7 @@ Rearrange the equation:
 τ<sub>u</sub> = T<sup>+</sup> τ   
 T<sup>+</sup> is the is the Moore-Penrose inverse of T, which can be written as:
 
-![Screenshot from 2021-07-28 00-51-47](https://user-images.githubusercontent.com/77399327/127242001-95d797f8-e24c-4005-a82b-4fc4fb35994a.png)
+![Screenshot from 2021-07-28 02-34-59](https://user-images.githubusercontent.com/77399327/127249536-cd4af993-6509-4b28-883d-7e041214d687.png)
 
 
 For MallARD_003, ly₁=ly₂=ly₃=ly₄=0.15m, lx₁=lx₂=lx₃=lx₄=0.205m, θ₁=3/4π, θ₂=5/4π, θ₃=1/4π, θ₄=7/4π  
