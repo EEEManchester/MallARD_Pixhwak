@@ -45,7 +45,7 @@ Rearrange the equation:
 τ<sub>u</sub> = T<sup>+</sup> τ   
 T<sup>+</sup> is the is the Moore-Penrose inverse of T, which can be written as:
 
-![Screenshot from 2021-07-27 17-06-10](https://user-images.githubusercontent.com/77399327/127188439-29cb2fff-8649-445c-af06-93e1e75cb18a.png)
+![Screenshot from 2021-07-28 00-51-47](https://user-images.githubusercontent.com/77399327/127242001-95d797f8-e24c-4005-a82b-4fc4fb35994a.png)
 
 
 For MallARD_003, ly₁=ly₂=ly₃=ly₄=0.15m, lx₁=lx₂=lx₃=lx₄=0.205m, θ₁=3/4π, θ₂=5/4π, θ₃=1/4π, θ₄=7/4π  
@@ -55,13 +55,12 @@ Write the T<sup>+</sup> in the factor table in firmware:
 
 | Motor | Roll Factor | Pitch Factor | Yaw Factor | Throttle Factor | Forward Factor | Lateral Factor | Testing Order |
 | ----- | ------ | ----- | ----- | ----- | ----- | ----- | -----|
-AP_MOTORS_MOT_1|0|0|-1.0f|0|1.0f|1.0f|1|  
-AP_MOTORS_MOT_2|0|0|1.0f|0|1.0f|-1.0f|2|  
-AP_MOTORS_MOT_3|0|0|1.0f|0|-1.0f|1.0f|3|
-AP_MOTORS_MOT_4|0|0|-1.0f|0|-1.0f|-1.0f|4|
+AP_MOTORS_MOT_1|0|0| 0.99f|0| 0.35f|-0.35f|1|  
+AP_MOTORS_MOT_2|0|0|-0.99f|0| 0.35f| 0.35f|2|  
+AP_MOTORS_MOT_3|0|0|-0.99f|0|-0.35f|-0.35f|3|
+AP_MOTORS_MOT_4|0|0| 0.99f|0|-0.35f| 0.35f|4|
 ## Refenence
 1. [ArduPilot_MALLARD](https://github.com/EEEManchester/ArduPilot_MALLARD/blob/733f57fa1fcc381113ecd4b01095a1f895e5a536/libraries/AP_Motors/AP_Motors6DOF.cpp)
 
 2. [Model Identification of a Small Omnidirectional Aquatic Surface
 Vehicle: a Practical Implementation](https://ieeexplore.ieee.org/document/9341142)  
-  
