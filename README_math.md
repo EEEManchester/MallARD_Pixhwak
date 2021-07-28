@@ -45,8 +45,7 @@ Rearrange the equation:
 τ<sub>u</sub> = T<sup>+</sup> τ   
 T<sup>+</sup> is the is the Moore-Penrose inverse of T, which can be written as:
 
-![Screenshot from 2021-07-28 02-34-59](https://user-images.githubusercontent.com/77399327/127249536-cd4af993-6509-4b28-883d-7e041214d687.png)
-
+![Screenshot from 2021-07-28 00-51-47](https://user-images.githubusercontent.com/77399327/127250859-3069b373-718a-41f3-89cd-444a42bb7c3b.png)
 
 For MallARD_003, ly₁=ly₂=ly₃=ly₄=0.15m, lx₁=lx₂=lx₃=lx₄=0.205m, θ₁=3/4π, θ₂=5/4π, θ₃=1/4π, θ₄=7/4π  
 
@@ -64,3 +63,4 @@ AP_MOTORS_MOT_4|0|0| 0.99f|0|-0.35f| 0.35f|4|
 
 2. [Model Identification of a Small Omnidirectional Aquatic Surface
 Vehicle: a Practical Implementation](https://ieeexplore.ieee.org/document/9341142)  
+
